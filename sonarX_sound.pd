@@ -1,0 +1,56 @@
+#N canvas 734 111 631 419 10;
+#X declare -lib mrpeach;
+#X obj 238 44 import mrpeach;
+#X obj 1 49 unpackOSC;
+#X obj 1 11 udpreceive 9998;
+#X obj 55 211 makefilename Synth_%d;
+#X obj 10 181 pack 0 0 0;
+#X obj 7 229 send;
+#X obj 3 144 unpack f f f f;
+#X obj 237 70 sounds;
+#X text 341 46 imports libraries for OSC;
+#X text 290 69 produces sound;
+#X obj 247 377 s scalaH;
+#X obj 244 242 vradio 15 1 0 9 empty empty empty 0 -8 0 10 -262144
+-1 -1 8;
+#X text 265 254 octave 12 notes (cromatic);
+#X text 241 222 scale to output H values;
+#X text 262 238 octave digital continuous;
+#X obj 240 175 s 0cross;
+#X obj 249 151 s save_sound;
+#X obj 315 173 s tikOnOff;
+#X text 275 358 2 octaves continuos (36/60);
+#X obj 108 156 s state;
+#X obj 203 173 s f0;
+#X text 236 -5 play_sonarX: gets HSV triplets from SonarX and plays
+the corresponding oscillators \, while the f0 is the "gray" ground
+tone;
+#X obj 57 349 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 78 370 print ++++++++;
+#X obj 82 341 repeat 10;
+#X obj 88 183 + 1;
+#X obj 442 332 print check;
+#X obj 423 185 s Gmode;
+#X obj 55 103 routeOSC /Synth /State /Scale /f0 /0cross /save_sound
+/tikOnOff /Gmode;
+#X connect 1 0 28 0;
+#X connect 2 0 1 0;
+#X connect 3 0 5 1;
+#X connect 4 0 5 0;
+#X connect 6 0 4 0;
+#X connect 6 1 4 1;
+#X connect 6 2 4 2;
+#X connect 6 3 25 0;
+#X connect 11 0 10 0;
+#X connect 22 0 24 0;
+#X connect 24 0 23 0;
+#X connect 25 0 3 0;
+#X connect 28 0 6 0;
+#X connect 28 1 19 0;
+#X connect 28 2 11 0;
+#X connect 28 3 20 0;
+#X connect 28 4 15 0;
+#X connect 28 5 16 0;
+#X connect 28 6 17 0;
+#X connect 28 7 27 0;
