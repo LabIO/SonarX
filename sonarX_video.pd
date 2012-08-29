@@ -1,6 +1,6 @@
-#N canvas 153 80 609 575 10;
+#N canvas 131 91 609 627 10;
 #X declare -lib mrpeach;
-#N canvas 830 509 272 212 stuff 0;
+#N canvas 804 530 272 212 stuff 0;
 #N canvas 664 349 581 290 mostralinha 0;
 #X obj 41 41 gemhead;
 #X obj 41 138 translateXYZ 0 0 1;
@@ -90,20 +90,25 @@
 #X connect 6 0 8 0;
 #X connect 6 0 10 0;
 #X restore -443 35 pd EXT_CTRL;
-#N canvas 830 342 253 272 INIT 0;
-#X obj -358 17 loadbang;
-#X obj -348 183 s f0init;
-#X obj -269 15 r reset_f0;
-#X msg -348 154 110;
-#X obj -213 45 r Gmode;
-#X obj -213 75 sel 2;
-#X connect 0 0 3 0;
-#X connect 2 0 3 0;
-#X connect 3 0 1 0;
-#X connect 4 0 5 0;
-#X connect 5 0 3 0;
+#N canvas 824 429 253 300 INIT 0;
+#X obj -303 3 loadbang;
+#X obj -302 105 r reset_f0;
+#X msg -302 235 110;
+#X obj -246 135 r Gmode;
+#X obj -246 165 sel 2;
+#X msg -303 30 \; f0_init 110 \; SustTime_init 100 \; steps_init 480
+\; vidORstill_init 1 \;;
+#X obj -301 264 s f0_init;
+#X msg -172 226 \; SustTime_init 100 \; SustOnOff_init 0 \;;
+#X obj -172 199 r SustTimeReset;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 6 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 8 0 7 0;
 #X restore -443 90 pd INIT;
-#N canvas 312 111 961 610 VIDEO_MAIN 0;
+#N canvas 294 120 961 610 VIDEO_MAIN 0;
 #X obj -138 413 pix_resize;
 #X obj -361 447 pix_texture;
 #X text 332 341 x-pos;
@@ -121,7 +126,7 @@
 0;
 #X text 197 -28 start / stop;
 #X obj 221 -7 tgl 30 0 empty startstop empty 17 7 0 10 -4034 -1 -1
-1 1;
+0 1;
 #X text 239 379 sends signal of end line;
 #X obj 224 486 s end_line;
 #X obj -131 364 pix_buffer_read frame;
@@ -154,7 +159,7 @@
 #X obj -372 279 rectangle 2.4 1.8;
 #X obj -372 249 translateXYZ 0 2 0;
 #X obj 278 404 r scanspeed;
-#N canvas 158 180 450 300 video_info 0;
+#N canvas 290 213 450 300 video_info 0;
 #X obj 59 40 inlet;
 #X obj 64 113 pix_info --------------;
 #X obj 63 161 s info_width;
@@ -182,16 +187,16 @@
 #X obj 122 194 r steps;
 #X obj 106 221 /;
 #X obj 84 194 * 480;
-#X obj -9 531 send HSV3plet;
+#X obj -9 539 send HSV3plet;
 #X obj 228 323 send pix_groupN;
 #X obj 322 427 pow 1.5;
-#N canvas 597 282 450 300 framesIN 1;
-#X obj 157 266 outlet;
-#X obj 136 8 gemhead;
-#X obj 67 56 cnv 15 80 30 empty empty empty 20 12 0 14 -24198 -66577
+#N canvas 647 200 450 300 framesIN 0;
+#X obj 187 272 outlet;
+#X obj 80 14 gemhead;
+#X obj 37 36 cnv 15 80 30 empty empty empty 20 12 0 14 -24198 -66577
 0;
-#X obj 76 65 pix_video;
-#N canvas 754 245 450 300 video_set 0;
+#X obj 47 44 pix_video;
+#N canvas 752 246 450 300 video_set 0;
 #X obj -164 214 outlet;
 #X msg -121 29 dimen 640 480;
 #X obj -298 8 r device;
@@ -219,212 +224,58 @@
 #X connect 12 0 8 0;
 #X connect 12 1 9 0;
 #X connect 12 2 10 0;
-#X restore 6 37 pd video_set;
-#N canvas 563 433 450 300 still_img 0;
-#N canvas 228 219 450 454 train_img 0;
-#X obj 338 193 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X msg 188 205 open img2train/red.jpg;
-#X msg 111 130 open img2train/green.jpg;
-#X msg 151 181 open img2train/orange.jpg;
-#X msg 126 157 open img2train/yellow.jpg;
-#X msg 89 103 open img2train/blue.jpg;
-#X msg 58 75 open img2train/violet.jpg;
-#X msg 43 48 open img2train/indigo.jpg;
-#X obj 310 168 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 284 140 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 260 112 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 240 89 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 220 60 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 206 35 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X msg 30 23 open img2train/gray.jpg;
-#X obj 183 9 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 192 -31 sel 0 1 2 3 4 5 6 7;
-#X obj 187 -139 r train_img_val;
-#X obj 190 -98 t f f;
-#X obj 210 -57 f;
-#X obj 229 -109 r vidORstill;
-#X obj 239 -82 sel 0;
-#X obj 322 -63 s NewFrame;
-#X obj 248 -58 t b b;
-#X obj 18 -13 gemhead;
-#X obj 19 199 pix_image;
-#X obj 19 229 outlet;
-#X obj 137 250 r test_img;
-#X connect 0 0 1 0;
-#X connect 1 0 25 0;
-#X connect 2 0 25 0;
-#X connect 3 0 25 0;
-#X connect 4 0 25 0;
-#X connect 5 0 25 0;
-#X connect 6 0 25 0;
-#X connect 7 0 25 0;
-#X connect 8 0 3 0;
-#X connect 9 0 4 0;
-#X connect 10 0 2 0;
-#X connect 11 0 5 0;
-#X connect 12 0 6 0;
-#X connect 13 0 7 0;
-#X connect 14 0 25 0;
-#X connect 15 0 14 0;
-#X connect 16 0 15 0;
-#X connect 16 1 13 0;
-#X connect 16 2 12 0;
-#X connect 16 3 11 0;
-#X connect 16 4 10 0;
-#X connect 16 5 9 0;
-#X connect 16 6 8 0;
-#X connect 16 7 0 0;
-#X connect 17 0 18 0;
-#X connect 18 0 16 0;
-#X connect 18 1 19 1;
-#X connect 19 0 16 0;
-#X connect 20 0 21 0;
-#X connect 21 0 23 0;
-#X connect 23 0 19 0;
-#X connect 23 1 22 0;
-#X connect 24 0 25 0;
-#X connect 25 0 26 0;
-#X connect 27 0 25 0;
-#X restore -156 198 pd train_img;
-#X obj -157 236 outlet;
-#X msg 108 215 open \$1;
-#X obj 108 241 s test_img;
-#X obj 190 189 openpanel;
-#X obj 190 153 bng 15 250 50 0 empty open_still_img empty 17 7 0 10
--262144 -1 -1;
-#X obj 190 232 print;
-#X msg -102 32 symbol /home/mick/PD_patches/sonarX/sonarX/patches/locations
-;
-#X msg -79 57 symbol /home/mick/PD_patches/sonarX/sonarX/patches/formas
-;
-#X msg -27 79 symbol /home/mick/Pictures/colorful_contrasts;
-#X msg -100 -2 symbol /home/mick/PD_patches/sonarX/sonarX/patches/img2train2
-;
-#N canvas 1 82 450 451 train_img2 0;
-#X obj 348 203 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 320 178 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 294 150 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 270 122 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 250 99 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 230 70 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 216 45 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 193 19 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
--1;
-#X obj 202 -21 sel 0 1 2 3 4 5 6 7;
-#X obj 200 -88 t f f;
-#X obj 220 -47 f;
-#X obj 239 -99 r vidORstill;
-#X obj 249 -72 sel 0;
-#X obj 332 -53 s NewFrame;
-#X obj 258 -48 t b b;
-#X obj 28 -3 gemhead;
-#X obj 29 209 pix_image;
-#X obj 29 239 outlet;
-#X obj 147 260 r test_img;
-#X obj 199 -129 r train_img2_val;
-#X msg 40 32 open img2train2/gray.jpg;
-#X msg 198 215 open img2train2/red.jpg;
-#X msg 161 192 open img2train2/gold.jpg;
-#X msg 136 167 open img2train2/chartreuse.jpg;
-#X msg 121 140 open img2train2/spring_green.jpg;
-#X msg 99 113 open img2train2/dodger_blue.jpg;
-#X msg 68 86 open img2train2/slate_blue.jpg;
-#X msg 53 58 open img2train2/fuchsia.jpg;
-#X connect 0 0 21 0;
-#X connect 1 0 22 0;
-#X connect 2 0 23 0;
-#X connect 3 0 24 0;
-#X connect 4 0 25 0;
-#X connect 5 0 26 0;
-#X connect 6 0 27 0;
-#X connect 7 0 20 0;
-#X connect 8 0 7 0;
-#X connect 8 1 6 0;
-#X connect 8 2 5 0;
-#X connect 8 3 4 0;
-#X connect 8 4 3 0;
-#X connect 8 5 2 0;
-#X connect 8 6 1 0;
-#X connect 8 7 0 0;
-#X connect 9 0 8 0;
-#X connect 9 1 10 1;
-#X connect 10 0 8 0;
-#X connect 11 0 12 0;
-#X connect 12 0 14 0;
-#X connect 14 0 10 0;
-#X connect 14 1 13 0;
-#X connect 15 0 16 0;
-#X connect 16 0 17 0;
-#X connect 18 0 16 0;
-#X connect 19 0 9 0;
-#X connect 20 0 16 0;
-#X connect 21 0 16 0;
-#X connect 22 0 16 0;
-#X connect 23 0 16 0;
-#X connect 24 0 16 0;
-#X connect 25 0 16 0;
-#X connect 26 0 16 0;
-#X connect 27 0 16 0;
-#X restore -50 210 pd train_img2;
-#X msg -86 119 symbol /home/mick/Documents/research/SeeThroughSound/mandalas_etc
-;
-#X connect 0 0 1 0;
-#X connect 2 0 3 0;
-#X connect 4 0 6 0;
-#X connect 4 0 2 0;
-#X connect 5 0 4 0;
-#X connect 7 0 4 0;
-#X connect 8 0 4 0;
-#X connect 9 0 4 0;
-#X connect 10 0 4 0;
-#X connect 11 0 1 0;
-#X connect 12 0 4 0;
-#X restore -10 198 pd still_img;
-#X obj 92 232 multiplex;
-#X obj 167 235 tgl 15 0 empty vidORstill empty 17 7 0 10 -262144 -1
+#X restore -2 14 pd video_set;
+#X obj 36 230 multiplex;
+#X obj 111 233 tgl 15 0 empty vidORstill empty 17 7 0 10 -262144 -1
 -1 1 1;
-#X obj 162 180 pix_background;
-#X obj 231 32 r play_mov;
-#X obj 298 61 loadbang;
-#X msg 298 88 0.2;
-#X floatatom 316 111 5 0 0 0 - - -;
-#X obj 68 127 demultiplex;
-#X obj 223 84 sel 1;
-#X msg 232 118 reset;
+#X obj 138 205 pix_background;
+#X obj 140 116 r play_mov;
+#X obj 243 110 loadbang;
+#X msg 238 180 0.2;
+#X floatatom 236 204 5 0 0 0 - - -;
+#X obj 47 184 demultiplex;
+#X obj 146 147 sel 1;
+#X msg 141 173 reset;
+#X msg -61 146 open \$1;
+#X obj -30 121 openpanel;
+#X obj -30 85 bng 15 250 50 0 empty open_still_img empty 17 7 0 10
+-262144 -1 -1;
+#X obj -8 147 print;
+#X obj -65 183 pix_image;
+#X obj -120 120 gemhead;
+#X floatatom 281 204 5 0 0 0 - - -;
+#X msg 281 179 1;
+#X obj 242 238 s vidORstill;
 #X connect 1 0 3 0;
-#X connect 3 0 13 0;
+#X connect 3 0 12 0;
 #X connect 4 0 3 0;
-#X connect 5 0 6 0;
-#X connect 6 0 0 0;
-#X connect 7 0 6 2;
-#X connect 8 0 6 1;
-#X connect 9 0 13 1;
-#X connect 9 0 14 0;
+#X connect 5 0 0 0;
+#X connect 6 0 5 2;
+#X connect 7 0 5 1;
+#X connect 8 0 12 1;
+#X connect 8 0 13 0;
+#X connect 9 0 10 0;
+#X connect 9 0 22 0;
 #X connect 10 0 11 0;
-#X connect 11 0 12 0;
-#X connect 12 0 8 1;
-#X connect 13 0 6 1;
-#X connect 13 1 8 0;
-#X connect 14 0 15 0;
-#X connect 15 0 8 0;
+#X connect 11 0 7 1;
+#X connect 12 0 5 1;
+#X connect 12 1 7 0;
+#X connect 13 0 14 0;
+#X connect 14 0 7 0;
+#X connect 15 0 19 0;
+#X connect 16 0 18 0;
+#X connect 16 0 15 0;
+#X connect 17 0 16 0;
+#X connect 19 0 5 0;
+#X connect 20 0 19 0;
+#X connect 21 0 23 0;
+#X connect 22 0 21 0;
 #X restore -372 62 pd framesIN;
 #X obj -9 497 rgb2hsv;
-#X obj -134 523 print checkPixData;
+#X obj -134 533 print checkPixData;
+#X obj 422 432 loadbang;
+#X msg 392 432 4;
+#X obj 405 490 0 0 0;
 #X connect 0 0 1 0;
 #X connect 0 0 36 1;
 #X connect 1 0 43 0;
@@ -488,41 +339,104 @@
 #X connect 64 0 51 0;
 #X connect 65 0 48 0;
 #X connect 66 0 62 0;
+#X connect 68 0 69 0;
+#X connect 68 0 70 0;
+#X connect 69 0 64 0;
+#X connect 70 0 62 0;
 #X restore -442 127 pd VIDEO_MAIN;
-#X restore 355 514 pd stuff;
-#X obj -141 -15 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
--1 -1 1 1;
-#X obj 15 47 hradio 15 1 0 11 scanspeed scanspeedGUI scan_time 0 -8
-0 10 -203904 -1 -1 9;
+#X restore 85 525 pd stuff;
+#X obj 46 50 hradio 15 1 0 11 scanspeed scanspeedGUI scan_time 0 -8
+0 10 -203904 -1 -1 0;
 #X obj 132 -10 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1
--1 1 1;
-#X obj -136 164 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
+-1 0 1;
+#X obj 79 393 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
+0;
+#X obj 91 412 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
+-1 -1 0 1;
+#X obj 126 74 bng 20 250 50 0 reset_scan empty reset_scan 23 7 0 10
+-159808 -1 -1;
+#X obj 45 110 hradio 30 1 0 4 Gmode empty Gray_Mode 0 -8 0 10 -99865
 -1 -1 0;
-#X text -116 159 pc camera;
-#X text -116 174 extra camera;
-#X text -117 193 extra camera;
-#X text -116 207 extra camera;
+#N canvas 754 99 450 643 HELP 0;
+#X text 18 432 * GRAY MODE Controls the modes of playing gray (zero
+Saturation) pixels: 0 - no sound 1 - white noise 2 - sawtooth wave
+at f0/2 frequency 3 - plays white noise AND sawtooth;
+#X text 17 314 * on/off OSC turns on/off udp/OSC connection it connects
+video patch to sound patch OBS: by default osundpatch is on Localhost
+9998 \, change to your IP adress if you want to link different computers
+;
+#X text 16 371 * scan_time controls the "delay/pause" between each
+row of played pixels;
+#X text 19 256 * vertical_resize sets the vertical resolution of input
+images;
+#X text 17 402 * reset_scan resets the scanning to the top;
+#X text 18 533 * Escalas chooses different scales (frequency ranges)
+for Hue;
+#X text 25 23 General Description scans vertically frames and outputs
+the mean values of H S and V for 12 groups of pixels for each line
+and/or gray value for gray pixels;
+#X text 19 116 * on/off_video turns on the video capture;
+#X text 19 151 * play_movement resets a background image when ON and
+plays all the pixel that differ from this background;
+#X text 41 78 the frames in input are played in gray mode and/or in
+color mode;
+#X text 19 198 * input_image switches between video or still image.
+to load an image click on the bang "load_still_img" (only works with
+still image mode);
+#X text 18 504 * on/off_sound turns on the sound in the sound patch
+;
+#X text 18 563 * f0 regulates the groundtone frequency;
+#X text 19 592 * SustainTime controls the sustain. "Hold" lets the
+sound play when the scanning stops;
+#X text 28 -4 <<<<<< SonarX >>>>>>;
+#X obj 301 -25 cnv 15 120 60 empty empty empty 20 12 0 14 -262130 -66577
+0;
+#X text 305 -23 Lab.I.O. Mick Mengucci Francisco Medeiros;
+#X restore 87 496 pd HELP;
+#N canvas 1 80 450 300 CREDITS 0;
+#X text 23 64 NOTE: this is a prototype \, created during an investigation
+project. In case of bugs and if it is usefull to you please email mengucci@gmail.com
+;
+#X restore 83 554 pd CREDITS;
+#X obj -151 -20 cnv 15 180 600 empty empty empty 20 12 0 14 -203904
+-66577 0;
+#X obj -141 -15 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
+-1 -1 0 1;
+#X obj -137 271 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
+-1 -1 0;
+#X text -117 266 pc camera;
+#X text -117 281 extra camera;
+#X text -118 300 extra camera;
+#X text -117 314 extra camera;
 #X obj -137 357 vradio 15 1 0 3 color_space empty color_space 0 -8
 0 10 -262144 -1 -1 0;
 #X text -113 356 RGBA;
 #X text -115 371 YUV;
 #X text -116 386 Grey;
-#X obj 261 -15 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
--1 -1 1 1;
-#X obj 261 64 vradio 15 1 0 9 scale empty Escalas 0 -8 0 10 -257985
--1 -1 8;
-#X obj 255 244 hsl 100 15 35 880 0 0 f0 f0init f0 -2 -8 0 10 -260097
--1 -1 879 1;
-#X obj 79 443 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
-0;
-#X obj 93 462 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
--1 -1 1 1;
 #X obj -136 422 cnv 15 120 110 empty empty empty 20 12 0 14 -261234
 -66577 0;
 #X floatatom -128 505 4 0 0 1 width info_width -;
 #X floatatom -128 481 4 0 0 1 height info_height -;
 #X floatatom -127 458 4 0 0 1 bytes/pixel info_bytes -;
 #X floatatom -128 436 5 0 0 1 colorspace info_colorspace -;
+#X floatatom -137 200 7 1 100000 1 vertical_resize steps_init steps
+;
+#X obj -134 153 bng 30 250 50 0 open_still_img empty load_still_img
+34 7 0 10 -232576 -1 -1;
+#X obj -84 6 tgl 30 0 play_mov empty play_movement 32 7 0 10 -232576
+-1 -1 0 1;
+#X obj -134 76 vradio 30 1 0 2 vidORstill vidORstill_init input_image
+0 -10 0 10 -4160 -1 -1 1;
+#X text -94 110 video;
+#X text -96 80 still image;
+#X obj 236 -21 cnv 15 220 600 empty empty empty 20 12 0 14 -261234
+-66577 0;
+#X obj 261 -15 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
+-1 -1 0 1;
+#X obj 261 64 vradio 15 1 0 9 scale empty Escalas 0 -8 0 10 -257985
+-1 -1 0;
+#X obj 255 244 hsl 100 15 35 880 0 0 f0 f0_init f0 -2 -8 0 10 -260097
+-1 -1 879 1;
 #X floatatom 252 265 10 0 0 0 - - -;
 #X obj 362 245 bng 15 250 50 1 reset_f0 empty empty 17 7 0 10 -262144
 -1 -1;
@@ -532,45 +446,19 @@
 #X text 280 139 36.7 / 2093 continuous;
 #X text 283 151 pentatonic M;
 #X text 283 167 pentatonic m;
-#X obj 76 182 vradio 30 1 0 8 train_img_val empty train_img 0 -8 0
-10 -262144 -1 -1 0;
-#X obj -141 43 tgl 30 0 vidORstill empty video_or_still_img 32 7 0
-10 -4160 -1 -1 1 1;
-#X obj 95 71 bng 20 250 50 0 reset_scan empty reset_scan 23 7 0 10
--159808 -1 -1;
-#X obj 256 343 tgl 30 0 tikOnOff empty click_on/off 32 7 0 10 -261682
+#X obj 258 397 tgl 30 0 tikOnOff empty click_on/off 32 7 0 10 -261682
 -1 -1 0 1;
-#X obj 145 181 vradio 25 1 0 8 train_img2_val empty train_img2 0 -8
-0 10 -262144 -1 -1 0;
-#X floatatom -135 293 7 1 100000 1 vertical_resize - -;
-#X obj -135 314 s steps;
-#X obj -136 245 loadbang;
-#X msg -135 269 480;
-#X obj 254 298 tgl 30 0 save_sound empty save_sound 17 7 0 10 -258113
+#X obj 257 440 tgl 30 0 save_sound empty save_sound 32 7 0 10 -258113
 -1 -1 0 1;
-#X obj -140 86 bng 30 250 50 0 open_still_img empty load_img 34 7 0
-10 -232576 -1 -1;
 #X text 282 107 26/2000Hz (Human voice);
 #X text 283 182 2 octaves continuos (36/60);
-#N canvas 358 103 450 300 comments 0;
-#X text -9 108 the frames in input are played in gray mode - that give
-a volume to phasor~ - and/or in color mode - that plays oscilators~
-with Hue/f S/overdrive and V/Volume;
-#X text -7 22 scans vertically frames and outputs the mean values of
-H S and V for 12 groups of pixels for each line and/or gray value for
-gray pixels play_movement option resets a background image when clicked
-ON and plays all the pixel that change from this background;
-#X text 0 162 NOTE: this is a prototype \, at first click on-off on
-the buttons if something does not work immediately... in case of bugs
-please email mengucci@gmail.com;
-#X text -4 3 SonarX;
-#X restore 353 485 pd comments;
-#X obj -82 4 tgl 30 0 play_mov empty play_movement 32 7 0 10 -203904
--1 -1 1 1;
 #X text 282 122 scale of 4ths;
-#X obj 14 107 hradio 30 1 0 4 Gmode empty Gray_Mode 0 -8 0 10 -99865
--1 -1 0;
-#X connect 15 0 23 0;
-#X connect 36 0 37 0;
-#X connect 38 0 39 0;
-#X connect 39 0 36 0;
+#X obj 255 317 hsl 101 15 0 4000 0 1 SustTime SustTime_init SustainTime
+-2 -8 0 10 -261682 -1 -1 250 1;
+#X floatatom 252 338 10 0 0 0 - - -;
+#X obj 368 317 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
+-1 -1 0 1;
+#X obj 369 338 bng 15 250 50 0 SustTimeReset empty reset 17 7 0 10
+-262144 -1 -1;
+#X connect 34 0 35 0;
+#X connect 48 0 49 0;

@@ -1,4 +1,4 @@
-#N canvas 734 111 631 419 10;
+#N canvas 730 113 631 419 10;
 #X declare -lib mrpeach;
 #X obj 238 44 import mrpeach;
 #X obj 1 49 unpackOSC;
@@ -12,7 +12,7 @@
 #X text 290 69 produces sound;
 #X obj 247 377 s scalaH;
 #X obj 244 242 vradio 15 1 0 9 empty empty empty 0 -8 0 10 -262144
--1 -1 8;
+-1 -1 0;
 #X text 265 254 octave 12 notes (cromatic);
 #X text 241 222 scale to output H values;
 #X text 262 238 octave digital continuous;
@@ -31,9 +31,11 @@ tone;
 #X obj 82 341 repeat 10;
 #X obj 88 183 + 1;
 #X obj 442 332 print check;
-#X obj 423 185 s Gmode;
-#X obj 55 103 routeOSC /Synth /State /Scale /f0 /0cross /save_sound
-/tikOnOff /Gmode;
+#X obj 421 188 s Gmode;
+#X obj 56 103 routeOSC /Synth /State /Scale /f0 /0cross /save_sound
+/tikOnOff /Gmode /SustOnOff /SustTime;
+#X obj 479 190 s SustOnOff;
+#X obj 563 186 s SustTime;
 #X connect 1 0 28 0;
 #X connect 2 0 1 0;
 #X connect 3 0 5 1;
@@ -54,3 +56,5 @@ tone;
 #X connect 28 5 16 0;
 #X connect 28 6 17 0;
 #X connect 28 7 27 0;
+#X connect 28 8 29 0;
+#X connect 28 9 30 0;
