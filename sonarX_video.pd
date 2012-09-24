@@ -1,6 +1,6 @@
-#N canvas 131 91 609 627 10;
+#N canvas 72 82 613 627 10;
 #X declare -lib mrpeach;
-#N canvas 804 530 272 212 stuff 0;
+#N canvas 68 530 272 212 stuff 0;
 #N canvas 664 349 581 290 mostralinha 0;
 #X obj 41 41 gemhead;
 #X obj 41 138 translateXYZ 0 0 1;
@@ -90,7 +90,7 @@
 #X connect 6 0 8 0;
 #X connect 6 0 10 0;
 #X restore -443 35 pd EXT_CTRL;
-#N canvas 824 429 253 300 INIT 0;
+#N canvas 822 442 253 300 INIT 0;
 #X obj -303 3 loadbang;
 #X obj -302 105 r reset_f0;
 #X msg -302 235 110;
@@ -108,7 +108,7 @@
 #X connect 4 0 2 0;
 #X connect 8 0 7 0;
 #X restore -443 90 pd INIT;
-#N canvas 294 120 961 610 VIDEO_MAIN 0;
+#N canvas 306 132 961 610 VIDEO_MAIN 0;
 #X obj -138 413 pix_resize;
 #X obj -361 447 pix_texture;
 #X text 332 341 x-pos;
@@ -126,7 +126,7 @@
 0;
 #X text 197 -28 start / stop;
 #X obj 221 -7 tgl 30 0 empty startstop empty 17 7 0 10 -4034 -1 -1
-0 1;
+1 1;
 #X text 239 379 sends signal of end line;
 #X obj 224 486 s end_line;
 #X obj -131 364 pix_buffer_read frame;
@@ -190,14 +190,14 @@
 #X obj -9 539 send HSV3plet;
 #X obj 228 323 send pix_groupN;
 #X obj 322 427 pow 1.5;
-#N canvas 647 200 450 300 framesIN 0;
-#X obj 187 272 outlet;
-#X obj 80 14 gemhead;
-#X obj 37 36 cnv 15 80 30 empty empty empty 20 12 0 14 -24198 -66577
+#N canvas 563 156 450 300 framesIN 0;
+#X obj 78 271 outlet;
+#X obj 93 24 gemhead;
+#X obj 50 46 cnv 15 80 30 empty empty empty 20 12 0 14 -24198 -66577
 0;
-#X obj 47 44 pix_video;
-#N canvas 752 246 450 300 video_set 0;
-#X obj -164 214 outlet;
+#X obj 60 54 pix_video;
+#N canvas 810 158 473 300 video_set 0;
+#X obj -154 239 outlet;
 #X msg -121 29 dimen 640 480;
 #X obj -298 8 r device;
 #X msg -254 99 device \$1;
@@ -206,10 +206,285 @@
 #X obj -301 143 delay 500;
 #X msg -301 168 \; onoffgemwin 1 \;;
 #X msg 19 68 colorspace RGB;
-#X msg 27 89 colorspace YUV;
-#X msg 41 114 colorspace Grey;
+#X msg 32 92 colorspace Grey;
 #X obj 22 17 r color_space;
-#X obj 22 42 sel 0 1 2;
+#X obj 22 42 sel 0 1;
+#N canvas 507 121 572 549 properties 0;
+#X msg 41 203 enumProps;
+#X obj 31 21 cnv 15 400 80 empty empty readProperties 20 12 0 14 -233017
+-66577 0;
+#X obj 39 47 hradio 15 1 0 10 \$0-propreadId \$0-propreadId empty 0
+-8 0 10 -262144 -1 -1 0;
+#X obj 40 70 cnv 15 260 20 empty \$0-propreadName <none> 10 9 0 14
+-203904 -66577 0;
+#N canvas 185 50 450 537 PropertyLogic 0;
+#N canvas 1408 84 774 460 id2property 0;
+#X obj 353 106 r \$0-info;
+#X obj 353 130 route proplist;
+#X obj 353 152 route read numread;
+#X obj 405 176 t b f;
+#X obj 353 174 list;
+#X obj 353 219 list prepend;
+#X msg 353 196 \$1;
+#X obj 353 239 t l l;
+#X obj 95 197 list prepend;
+#X obj 525 176 t b f;
+#X obj 473 174 list;
+#X obj 473 219 list prepend;
+#X msg 473 196 \$1;
+#X obj 473 239 t l l;
+#X obj 473 152 route write numwrite;
+#X obj 95 69 inlet readID;
+#X obj 225 70 inlet writeID;
+#X obj 123 378 outlet readName;
+#X obj 253 356 outlet writeName;
+#X obj 95 176 t b f;
+#X obj 95 219 list split;
+#X obj 123 266 symbol;
+#X msg 123 241 symbol \$1;
+#X obj 225 197 list prepend;
+#X obj 225 176 t b f;
+#X obj 225 219 list split;
+#X obj 253 266 symbol;
+#X msg 253 241 symbol \$1;
+#X obj 95 91 route float;
+#X obj 225 92 route float;
+#X msg 432 333 number \$1;
+#X msg 552 333 number \$1;
+#X obj 432 353 s \$0-propreadId;
+#X obj 552 353 s \$0-propwriteId;
+#X obj 602 254 t f f;
+#X msg 602 232 0;
+#X obj 602 211 loadbang;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 2 1 3 0;
+#X connect 2 2 14 0;
+#X connect 3 0 5 1;
+#X connect 3 1 30 0;
+#X connect 4 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 0 5 0;
+#X connect 7 0 8 1;
+#X connect 7 1 5 1;
+#X connect 8 0 20 0;
+#X connect 9 0 11 1;
+#X connect 9 1 31 0;
+#X connect 10 0 12 0;
+#X connect 11 0 13 0;
+#X connect 12 0 11 0;
+#X connect 13 0 23 1;
+#X connect 13 1 11 1;
+#X connect 14 0 10 0;
+#X connect 14 1 9 0;
+#X connect 15 0 28 0;
+#X connect 16 0 29 0;
+#X connect 19 0 8 0;
+#X connect 19 1 20 1;
+#X connect 20 1 22 0;
+#X connect 21 0 17 0;
+#X connect 22 0 21 0;
+#X connect 23 0 25 0;
+#X connect 24 0 23 0;
+#X connect 24 1 25 1;
+#X connect 25 1 27 0;
+#X connect 26 0 18 0;
+#X connect 27 0 26 0;
+#X connect 28 0 19 0;
+#X connect 29 0 24 0;
+#X connect 30 0 32 0;
+#X connect 31 0 33 0;
+#X connect 34 0 30 0;
+#X connect 34 1 31 0;
+#X connect 35 0 34 0;
+#X connect 36 0 35 0;
+#X restore 188 192 pd id2property;
+#X obj 320 407 list prepend set;
+#X obj 320 429 list trim;
+#X obj 320 451 t b a;
+#N canvas 437 141 450 300 getProp 0;
+#X obj 44 177 s \$0-propreadName;
+#X msg 44 156 label \$1;
+#X msg 165 156 get \$1;
+#X obj 44 81 inlet;
+#X obj 165 178 outlet;
+#X obj 290 57 r \$0-info;
+#X obj 290 79 route prop;
+#N canvas 3 45 450 300 sroute 0;
+#X obj 73 12 inlet;
+#X obj 312 9 inlet;
+#X obj 73 113 outlet;
+#X obj 73 34 list split 1;
+#X obj 73 56 select s;
+#X obj 73 78 list prepend;
+#X connect 0 0 3 0;
+#X connect 1 0 4 1;
+#X connect 3 0 4 0;
+#X connect 3 1 5 1;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X restore 290 113 pd sroute;
+#X obj 44 123 t s s s;
+#X msg 290 226 label \$1;
+#X obj 290 247 s \$0-propreadValue;
+#X obj 290 135 route float;
+#X obj 290 157 makefilename %g;
+#X obj 106 29 loadbang;
+#X obj 106 51 t b b;
+#X msg 106 73 symbol <none>;
+#X msg 196 74 symbol --;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 3 0 8 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 11 0;
+#X connect 8 0 1 0;
+#X connect 8 1 2 0;
+#X connect 8 2 7 1;
+#X connect 9 0 10 0;
+#X connect 11 0 12 0;
+#X connect 12 0 9 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 14 1 16 0;
+#X connect 15 0 1 0;
+#X connect 16 0 9 0;
+#X restore 320 318 pd getProp;
+#X obj 172 158 r \$0-propreadId;
+#X obj 282 158 r \$0-propwriteId;
+#N canvas 432 95 450 467 setProp 0;
+#X msg 44 156 label \$1;
+#X msg 165 156 get \$1;
+#X obj 44 31 inlet;
+#X obj 218 324 outlet;
+#X obj 290 57 r \$0-info;
+#X obj 290 79 route prop;
+#N canvas 4 50 450 300 sroute 0;
+#X obj 73 12 inlet;
+#X obj 312 9 inlet;
+#X obj 73 113 outlet;
+#X obj 73 34 list split 1;
+#X obj 73 56 select s;
+#X obj 73 78 list prepend;
+#X connect 0 0 3 0;
+#X connect 1 0 4 1;
+#X connect 3 0 4 0;
+#X connect 3 1 5 1;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X restore 290 113 pd sroute;
+#X obj 290 135 route float;
+#X obj 44 177 s \$0-propwriteName;
+#X obj 290 247 s \$0-propwriteValue;
+#X msg 290 226 set \$1;
+#X obj 50 276 r \$0-propwriteValue;
+#X obj 50 298 route float;
+#X obj 50 320 pack 0 s;
+#X msg 50 342 set \$2 \$1;
+#X obj 44 73 t s s s s;
+#X obj 127 27 loadbang;
+#X obj 127 49 t b b;
+#X msg 127 71 symbol <none>;
+#X connect 0 0 8 0;
+#X connect 1 0 3 0;
+#X connect 2 0 15 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 10 0;
+#X connect 10 0 9 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 3 0;
+#X connect 15 0 0 0;
+#X connect 15 1 1 0;
+#X connect 15 2 6 1;
+#X connect 15 3 13 1;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 0 0 0;
+#X restore 199 315 pd setProp;
+#X obj 199 404 list prepend set;
+#X obj 199 426 list trim;
+#X obj 199 448 t b a;
+#X obj 199 361 list prepend get;
+#X obj 199 339 route get set;
+#X obj 309 361 list prepend set;
+#X obj 199 477 s \$0-propset;
+#X obj 320 480 s \$0-propget;
+#X obj 54 38 inlet;
+#X obj 54 66 s \$0-ctl;
+#X connect 0 0 4 0;
+#X connect 0 1 7 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 15 0;
+#X connect 3 1 15 0;
+#X connect 4 0 12 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 1;
+#X connect 7 0 12 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 14 0;
+#X connect 10 1 14 0;
+#X connect 11 0 1 0;
+#X connect 12 0 11 0;
+#X connect 12 1 13 0;
+#X connect 13 0 8 0;
+#X connect 16 0 17 0;
+#X restore 41 526 pd PropertyLogic;
+#X obj 310 70 cnv 15 100 20 empty \$0-propreadValue -- 10 9 0 14 -261234
+-66577 0;
+#X obj 31 111 cnv 15 400 80 empty empty writeProperties 20 12 0 14
+-233017 -66577 0;
+#X obj 39 137 hradio 15 1 0 10 \$0-propwriteId \$0-propwriteId empty
+0 -8 0 10 -262144 -1 -1 0;
+#X obj 40 160 cnv 15 100 60 empty \$0-propwriteName <none> 20 12 0
+14 -233017 -66577 0;
+#X obj 311 160 nbx 5 20 -1e+37 1e+37 0 0 \$0-propwriteValue \$0-propwriteValue
+empty 0 -8 0 14 -204786 -1 -1 0 256;
+#X msg 66 315 get White Balance Temperature\, Auto;
+#X msg 83 392 set White Balance Temperature\, Auto 0;
+#X obj 66 294 r \$0-propget;
+#X obj 83 372 r \$0-propset;
+#X msg 87 340 get Hue Saturation;
+#X text 208 340 you can query several properties at once;
+#X text 146 295 query a (readable) property via a message "get <propname>"
+;
+#X text 161 372 set a (writable) property via a message "set <prop>
+<value>";
+#X text 70 224 this will return 2 lists of readable and writeable properties
+through the "info" outlet of [pix_video].;
+#X text 72 257 NOTE that propertynames are always single symbols that
+might contain spaces (and other weird characters);
+#X text 103 203 INIT: query names of all available properties;
+#X text 83 423 ATOMIC setting of multiple properties;
+#X msg 99 441 clearProps;
+#X msg 99 503 applyProps;
+#X msg 99 481 setProps Hue 10;
+#X msg 99 461 setProps Contrast 40;
+#X text 247 443 clear the current property list;
+#X text 247 461 add values to the property list (don't apply yet);
+#X text 247 479 add values to the property list (don't apply yet);
+#X text 247 499 apply current property list;
+#X connect 0 0 4 0;
+#X connect 10 0 4 0;
+#X connect 11 0 4 0;
+#X connect 12 0 10 0;
+#X connect 13 0 11 0;
+#X connect 14 0 4 0;
+#X connect 22 0 4 0;
+#X connect 23 0 4 0;
+#X connect 24 0 4 0;
+#X connect 25 0 4 0;
+#X restore -32 246 pd properties;
+#X msg -48 178 enumProps;
+#X obj -82 216 r \$0-ctl;
+#X msg -92 270 set White Balance Temperature\, Auto 0;
 #X connect 1 0 0 0;
 #X connect 2 0 4 0;
 #X connect 3 0 0 0;
@@ -219,15 +494,15 @@
 #X connect 6 0 7 0;
 #X connect 8 0 0 0;
 #X connect 9 0 0 0;
-#X connect 10 0 0 0;
-#X connect 11 0 12 0;
-#X connect 12 0 8 0;
-#X connect 12 1 9 0;
-#X connect 12 2 10 0;
-#X restore -2 14 pd video_set;
-#X obj 36 230 multiplex;
-#X obj 111 233 tgl 15 0 empty vidORstill empty 17 7 0 10 -262144 -1
--1 1 1;
+#X connect 10 0 11 0;
+#X connect 11 0 8 0;
+#X connect 11 1 9 0;
+#X connect 13 0 0 0;
+#X connect 14 0 0 0;
+#X restore 11 24 pd video_set;
+#X obj 7 238 multiplex;
+#X obj 74 239 tgl 15 0 empty vidORstill vidORstill_receive 17 7 0 10
+-262144 -1 -1 1 1;
 #X obj 138 205 pix_background;
 #X obj 140 116 r play_mov;
 #X obj 243 110 loadbang;
@@ -246,8 +521,13 @@
 #X floatatom 281 204 5 0 0 0 - - -;
 #X msg 281 179 1;
 #X obj 242 238 s vidORstill;
+#X obj -98 20 r img2load;
+#X obj 84 96 print;
+#X obj 137 83 s \$0-info;
 #X connect 1 0 3 0;
 #X connect 3 0 12 0;
+#X connect 3 1 25 0;
+#X connect 3 1 26 0;
 #X connect 4 0 3 0;
 #X connect 5 0 0 0;
 #X connect 6 0 5 2;
@@ -270,6 +550,7 @@
 #X connect 20 0 19 0;
 #X connect 21 0 23 0;
 #X connect 22 0 21 0;
+#X connect 24 0 19 0;
 #X restore -372 62 pd framesIN;
 #X obj -9 497 rgb2hsv;
 #X obj -134 533 print checkPixData;
@@ -344,75 +625,168 @@
 #X connect 69 0 64 0;
 #X connect 70 0 62 0;
 #X restore -442 127 pd VIDEO_MAIN;
-#X restore 85 525 pd stuff;
-#X obj 46 50 hradio 15 1 0 11 scanspeed scanspeedGUI scan_time 0 -8
+#N canvas 699 135 488 374 keyboard_ctrl 0;
+#X obj 4 -90 key;
+#X obj 55 37 - 48;
+#X obj 55 67 * -1;
+#X obj 55 99 + 9;
+#X obj 254 101 print ////////;
+#X obj 257 75 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 82 130 sel 0 1 2 3 4 5 6 7 8 9;
+#X obj 126 266 s ref_scale_rec;
+#X msg 8 182 0;
+#X msg 309 189 9;
+#X msg 40 183 1;
+#X msg 68 182 2;
+#X msg 100 184 3;
+#X msg 134 185 4;
+#X msg 167 185 5;
+#X msg 198 184 6;
+#X msg 235 186 7;
+#X msg 273 187 8;
+#X obj 32 7 sel 32;
+#X msg -67 101 \; vidORstill_init 1;
+#X obj 15 -53 spigot;
+#X obj 49 -72 r PerformanceMode;
+#X obj 8 -23 t b f;
+#X msg -126 18 \; NewFrame 0 \; reset_scan bang \;;
+#X connect 0 0 20 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 6 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 6 1 10 0;
+#X connect 6 2 11 0;
+#X connect 6 3 12 0;
+#X connect 6 4 13 0;
+#X connect 6 5 14 0;
+#X connect 6 6 15 0;
+#X connect 6 7 16 0;
+#X connect 6 8 17 0;
+#X connect 6 9 9 0;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 10 0 7 0;
+#X connect 11 0 7 0;
+#X connect 12 0 7 0;
+#X connect 13 0 7 0;
+#X connect 14 0 7 0;
+#X connect 15 0 7 0;
+#X connect 16 0 7 0;
+#X connect 17 0 7 0;
+#X connect 18 0 19 0;
+#X connect 18 1 1 0;
+#X connect 20 0 22 0;
+#X connect 21 0 20 1;
+#X connect 22 0 23 0;
+#X connect 22 1 18 0;
+#X restore -324 -25 pd keyboard_ctrl;
+#N canvas 758 99 607 643 img4ref_scale 0;
+#X obj -40 10 r ref_scale_send;
+#X obj 26 67 sel 0 1 2 3 4 5 6 7 8 9;
+#X msg 134 149 \; vidORstill_init 0 \; img2load open ./images4ref_scale/1_orange.jpg
+;
+#X msg 120 202 \; vidORstill_init 0 \; img2load open ./images4ref_scale/2_yellow.jpg
+;
+#X msg 107 252 \; vidORstill_init 0 \; img2load open ./images4ref_scale/3_chartreuse.jpg
+;
+#X msg 94 308 \; vidORstill_init 0 \; img2load open ./images4ref_scale/4_green.jpg
+;
+#X msg 80 362 \; vidORstill_init 0 \; img2load open ./images4ref_scale/5_spring_green.jpg
+;
+#X msg 66 415 \; vidORstill_init 0 \; img2load open ./images4ref_scale/6_sky_blue.jpg
+;
+#X msg 54 470 \; vidORstill_init 0 \; img2load open ./images4ref_scale/7_slate_blue.jpg
+;
+#X msg 36 524 \; vidORstill_init 0 \; img2load open ./images4ref_scale/8_indigo.jpg
+;
+#X msg 21 578 \; vidORstill_init 0 \; img2load open ./images4ref_scale/9_violet.jpg
+;
+#X msg 153 93 \; vidORstill_init 0 \; vidORstill_init 0 \; img2load
+open ./images4ref_scale/0_red.jpg;
+#X connect 0 0 1 0;
+#X connect 1 0 10 0;
+#X connect 1 1 9 0;
+#X connect 1 2 8 0;
+#X connect 1 3 7 0;
+#X connect 1 4 6 0;
+#X connect 1 5 5 0;
+#X connect 1 6 4 0;
+#X connect 1 7 3 0;
+#X connect 1 8 2 0;
+#X connect 1 9 11 0;
+#X restore -323 7 pd img4ref_scale;
+#X restore 160 530 pd stuff;
+#X obj 44 -3 hradio 15 1 0 11 scanspeed scanspeedGUI scan_time 0 -8
 0 10 -203904 -1 -1 0;
-#X obj 132 -10 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1
--1 0 1;
-#X obj 79 393 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
+#X obj 42 462 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1 -1
+1 1;
+#X obj 41 501 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
-#X obj 91 412 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
--1 -1 0 1;
-#X obj 126 74 bng 20 250 50 0 reset_scan empty reset_scan 23 7 0 10
+#X obj 53 520 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
+-1 -1 1 1;
+#X obj 124 18 bng 20 250 50 0 reset_scan empty reset_scan 23 7 0 10
 -159808 -1 -1;
-#X obj 45 110 hradio 30 1 0 4 Gmode empty Gray_Mode 0 -8 0 10 -99865
--1 -1 0;
-#N canvas 754 99 450 643 HELP 0;
-#X text 18 432 * GRAY MODE Controls the modes of playing gray (zero
-Saturation) pixels: 0 - no sound 1 - white noise 2 - sawtooth wave
-at f0/2 frequency 3 - plays white noise AND sawtooth;
-#X text 17 314 * on/off OSC turns on/off udp/OSC connection it connects
+#N canvas 744 79 450 663 HELP 0;
+#X text 20 2 General Description scans vertically frames and outputs
+the mean values of H S and V for 12 groups of pixels for each line
+and/or gray value for gray pixels;
+#X text 17 46 the frames in input are played in gray mode and/or in
+color mode;
+#X text 25 -19 <<<<<< SonarX >>>>>>;
+#X text 12 513 * lowest_pitch: regulates the groundtone frequency;
+#X text 14 91 * on/off_video: turns on the video capture;
+#X text 14 116 * play_movement: resets a background image when ON and
+plays all the pixel that differ from this background;
+#X text 13 158 * input_image: switches between video or still image.
+to load an image click on the bang "load_still_img" (only works with
+still image mode);
+#X text 13 206 * vertical_resize: sets the vertical resolution of input
+images;
+#X text 13 238 * device: choose different capturing device;
+#X text 13 260 * color_space: switch between rgb and gray mode;
+#X text 14 287 * on/off_OSC: turns on/off udp/OSC connection it connects
 video patch to sound patch OBS: by default osundpatch is on Localhost
 9998 \, change to your IP adress if you want to link different computers
 ;
-#X text 16 371 * scan_time controls the "delay/pause" between each
+#X text 13 347 * scan_time: controls the "delay/pause" between each
 row of played pixels;
-#X text 19 256 * vertical_resize sets the vertical resolution of input
-images;
-#X text 17 402 * reset_scan resets the scanning to the top;
-#X text 18 533 * Escalas chooses different scales (frequency ranges)
-for Hue;
-#X text 25 23 General Description scans vertically frames and outputs
-the mean values of H S and V for 12 groups of pixels for each line
-and/or gray value for gray pixels;
-#X text 19 116 * on/off_video turns on the video capture;
-#X text 19 151 * play_movement resets a background image when ON and
-plays all the pixel that differ from this background;
-#X text 41 78 the frames in input are played in gray mode and/or in
-color mode;
-#X text 19 198 * input_image switches between video or still image.
-to load an image click on the bang "load_still_img" (only works with
-still image mode);
-#X text 18 504 * on/off_sound turns on the sound in the sound patch
+#X text 12 381 * reset_scan: resets the scanning to the top;
+#X text 13 402 * Gray_Mode: Controls the modes of playing gray (zero
+Saturation) pixels: 0 - no sound 1 - white noise 2 - sawtooth wave
+at f0/2 frequency 3 - plays white noise AND sawtooth;
+#X text 13 461 * on/off_sound: turns on the sound in the sound patch
 ;
-#X text 18 563 * f0 regulates the groundtone frequency;
-#X text 19 592 * SustainTime controls the sustain. "Hold" lets the
+#X text 12 483 * Escalas: chooses different scales (frequency ranges)
+for Hue;
+#X text 11 533 * SustainTime: controls the sustain. "Hold" lets the
 sound play when the scanning stops;
-#X text 28 -4 <<<<<< SonarX >>>>>>;
-#X obj 301 -25 cnv 15 120 60 empty empty empty 20 12 0 14 -262130 -66577
-0;
-#X text 305 -23 Lab.I.O. Mick Mengucci Francisco Medeiros;
-#X restore 87 496 pd HELP;
+#X text 155 -19 Lab.I.O. (Mick Mengucci & Francisco X Medeiros);
+#X text 11 565 * click_on/off: turns on/off the click at the beginning
+of the frame;
+#X text 10 592 * save_sound: records audio output into a stereo recording
+;
+#X text 16 608 * keyboard: use keyboard to hear notes in the reference
+scale;
+#X restore 162 501 pd HELP;
 #N canvas 1 80 450 300 CREDITS 0;
 #X text 23 64 NOTE: this is a prototype \, created during an investigation
 project. In case of bugs and if it is usefull to you please email mengucci@gmail.com
 ;
-#X restore 83 554 pd CREDITS;
+#X restore 158 559 pd CREDITS;
 #X obj -151 -20 cnv 15 180 600 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj -141 -15 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
--1 -1 0 1;
+-1 -1 1 1;
 #X obj -137 271 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
--1 -1 0;
-#X text -117 266 pc camera;
-#X text -117 281 extra camera;
-#X text -118 300 extra camera;
-#X text -117 314 extra camera;
-#X obj -137 357 vradio 15 1 0 3 color_space empty color_space 0 -8
+-1 -1 1;
+#X text -118 268 pc camera;
+#X text -119 283 extra camera;
+#X obj -136 357 vradio 15 1 0 2 color_space empty color_space 0 -8
 0 10 -262144 -1 -1 0;
 #X text -113 356 RGBA;
-#X text -115 371 YUV;
-#X text -116 386 Grey;
 #X obj -136 422 cnv 15 120 110 empty empty empty 20 12 0 14 -261234
 -66577 0;
 #X floatatom -128 505 4 0 0 1 width info_width -;
@@ -433,32 +807,54 @@ project. In case of bugs and if it is usefull to you please email mengucci@gmail
 -66577 0;
 #X obj 261 -15 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
 -1 -1 0 1;
-#X obj 261 64 vradio 15 1 0 9 scale empty Escalas 0 -8 0 10 -257985
--1 -1 0;
-#X obj 255 244 hsl 100 15 35 880 0 0 f0 f0_init f0 -2 -8 0 10 -260097
--1 -1 879 1;
-#X floatatom 252 265 10 0 0 0 - - -;
-#X obj 362 245 bng 15 250 50 1 reset_f0 empty empty 17 7 0 10 -262144
+#X obj 259 344 hsl 100 15 35 880 0 0 f0 f0_init lowest_pitch -2 -8
+0 10 -260097 -1 -1 879 1;
+#X floatatom 256 365 10 0 0 0 - - -;
+#X obj 366 345 bng 15 250 50 1 reset_f0 empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 280 60 octave digital continuous;
-#X text 281 74 octave 12 notes (chromatic);
-#X text 281 89 26 to 96 (C1 e C7);
-#X text 280 139 36.7 / 2093 continuous;
-#X text 283 151 pentatonic M;
-#X text 283 167 pentatonic m;
-#X obj 258 397 tgl 30 0 tikOnOff empty click_on/off 32 7 0 10 -261682
+#X obj 254 491 tgl 30 0 tikOnOff empty click_on/off 32 7 0 10 -261682
 -1 -1 0 1;
-#X obj 257 440 tgl 30 0 save_sound empty save_sound 32 7 0 10 -258113
+#X obj 254 534 tgl 30 0 save_sound empty save_sound 32 7 0 10 -258113
 -1 -1 0 1;
-#X text 282 107 26/2000Hz (Human voice);
-#X text 283 182 2 octaves continuos (36/60);
-#X text 282 122 scale of 4ths;
-#X obj 255 317 hsl 101 15 0 4000 0 1 SustTime SustTime_init SustainTime
+#X obj 259 417 hsl 101 15 0 4000 0 1 SustTime SustTime_init SustainTime
 -2 -8 0 10 -261682 -1 -1 250 1;
-#X floatatom 252 338 10 0 0 0 - - -;
-#X obj 368 317 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
+#X floatatom 256 438 10 0 0 0 - - -;
+#X obj 372 417 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
 -1 -1 0 1;
-#X obj 369 338 bng 15 250 50 0 SustTimeReset empty reset 17 7 0 10
+#X obj 373 438 bng 15 250 50 0 SustTimeReset empty reset 17 7 0 10
 -262144 -1 -1;
-#X connect 34 0 35 0;
-#X connect 48 0 49 0;
+#X obj 41 50 vradio 25 1 0 4 Gmode empty Gray_Mode -2 -8 0 10 -99865
+-1 -1 0;
+#X text 73 77 white_noise;
+#X text 73 103 phasor_groundtone;
+#X text 73 129 both;
+#X text -119 298 extra camera 1;
+#X text -119 313 extra camera 2;
+#X obj 42 183 vradio 25 1 0 10 ref_scale_send ref_scale_rec Ref_Scale
+0 -8 0 10 -232576 -1 -1 0;
+#X text 79 183 violet 320;
+#X obj 254 79 vradio 25 1 0 9 scale empty Escalas 0 -8 0 10 -257985
+-1 -1 0;
+#X text 288 81 octave digital continuous;
+#X text 288 104 octave 12 notes (chromatic);
+#X text 288 129 26 to 96 (C1 e C7);
+#X text 289 205 36.7 / 2093 continuous;
+#X text 290 230 pentatonic M;
+#X text 290 255 pentatonic m;
+#X text 289 280 2 octaves continuos;
+#X text 289 180 scale of perfect 4ths;
+#X text 289 156 26/2000Hz;
+#X text -115 371 Gray;
+#X text 78 208 indigo 280;
+#X text 76 236 slate blue 257;
+#X text 73 259 sky blue 200;
+#X text 76 310 green 120;
+#X text 74 284 spring green 154;
+#X text 75 336 chartreuse 103;
+#X text 74 361 yellow 60;
+#X text 73 386 orange 30;
+#X text 73 410 red 0;
+#X obj 377 537 tgl 25 0 PerformanceMode empty keyboard -5 32 0 10 -191407
+-1 -1 0 1;
+#X connect 28 0 29 0;
+#X connect 33 0 34 0;
