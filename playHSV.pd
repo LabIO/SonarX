@@ -1,4 +1,4 @@
-#N canvas 201 168 983 547 10;
+#N canvas 195 171 983 547 10;
 #X obj 444 42 osc~;
 #X obj 445 18 line~;
 #X obj 571 -163 r Synth_\$1;
@@ -52,7 +52,7 @@
 #X obj 919 -34 sel 0 1;
 #X msg 919 -9 1;
 #X msg 951 -7 0;
-#N canvas 381 194 814 474 escalas 0;
+#N canvas 375 197 814 474 escalas 1;
 #X obj 26 -187 inlet;
 #X obj 120 -177 r scalaH;
 #X obj -63 7 int;

@@ -1,6 +1,6 @@
-#N canvas 72 82 613 627 10;
+#N canvas 96 79 613 627 10;
 #X declare -lib mrpeach;
-#N canvas 68 530 272 212 stuff 0;
+#N canvas 66 530 272 212 stuff 0;
 #N canvas 664 349 581 290 mostralinha 0;
 #X obj 41 41 gemhead;
 #X obj 41 138 translateXYZ 0 0 1;
@@ -213,7 +213,7 @@
 #X msg 41 203 enumProps;
 #X obj 31 21 cnv 15 400 80 empty empty readProperties 20 12 0 14 -233017
 -66577 0;
-#X obj 39 47 hradio 15 1 0 10 \$0-propreadId \$0-propreadId empty 0
+#X obj 39 47 hradio 15 1 0 9 \$0-propreadId \$0-propreadId empty 0
 -8 0 10 -262144 -1 -1 0;
 #X obj 40 70 cnv 15 260 20 empty \$0-propreadName <none> 10 9 0 14
 -203904 -66577 0;
@@ -441,7 +441,7 @@
 -66577 0;
 #X obj 31 111 cnv 15 400 80 empty empty writeProperties 20 12 0 14
 -233017 -66577 0;
-#X obj 39 137 hradio 15 1 0 10 \$0-propwriteId \$0-propwriteId empty
+#X obj 39 137 hradio 15 1 0 9 \$0-propwriteId \$0-propwriteId empty
 0 -8 0 10 -262144 -1 -1 0;
 #X obj 40 160 cnv 15 100 60 empty \$0-propwriteName <none> 20 12 0
 14 -233017 -66577 0;
@@ -683,7 +683,7 @@ might contain spaces (and other weird characters);
 #X connect 22 0 23 0;
 #X connect 22 1 18 0;
 #X restore -324 -25 pd keyboard_ctrl;
-#N canvas 758 99 607 643 img4ref_scale 0;
+#N canvas 756 99 607 643 img4ref_scale 1;
 #X obj -40 10 r ref_scale_send;
 #X obj 26 67 sel 0 1 2 3 4 5 6 7 8 9;
 #X msg 134 149 \; vidORstill_init 0 \; img2load open ./images4ref_scale/1_orange.jpg
@@ -704,8 +704,8 @@ might contain spaces (and other weird characters);
 ;
 #X msg 21 578 \; vidORstill_init 0 \; img2load open ./images4ref_scale/9_violet.jpg
 ;
-#X msg 153 93 \; vidORstill_init 0 \; vidORstill_init 0 \; img2load
-open ./images4ref_scale/0_red.jpg;
+#X msg 153 93 \; vidORstill_init 0 \; img2load open ./images4ref_scale/0_red.jpg
+;
 #X connect 0 0 1 0;
 #X connect 1 0 10 0;
 #X connect 1 1 9 0;
@@ -720,7 +720,7 @@ open ./images4ref_scale/0_red.jpg;
 #X restore -323 7 pd img4ref_scale;
 #X restore 160 530 pd stuff;
 #X obj 44 -3 hradio 15 1 0 11 scanspeed scanspeedGUI scan_time 0 -8
-0 10 -203904 -1 -1 0;
+0 10 -203904 -1 -1 2;
 #X obj 42 462 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1 -1
 1 1;
 #X obj 41 501 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
@@ -729,7 +729,7 @@ open ./images4ref_scale/0_red.jpg;
 -1 -1 1 1;
 #X obj 124 18 bng 20 250 50 0 reset_scan empty reset_scan 23 7 0 10
 -159808 -1 -1;
-#N canvas 744 79 450 663 HELP 0;
+#N canvas 738 79 450 663 HELP 0;
 #X text 20 2 General Description scans vertically frames and outputs
 the mean values of H S and V for 12 groups of pixels for each line
 and/or gray value for gray pixels;
@@ -768,10 +768,10 @@ sound play when the scanning stops;
 of the frame;
 #X text 10 592 * save_sound: records audio output into a stereo recording
 ;
-#X text 16 608 * keyboard: use keyboard to hear notes in the reference
-scale;
+#X text 16 608 * keyboard: use keyboard to hear notes of the reference
+colors sounds \, press space bar to return to video analysis;
 #X restore 162 501 pd HELP;
-#N canvas 1 80 450 300 CREDITS 0;
+#N canvas 1 81 450 300 CREDITS 0;
 #X text 23 64 NOTE: this is a prototype \, created during an investigation
 project. In case of bugs and if it is usefull to you please email mengucci@gmail.com
 ;
@@ -781,7 +781,7 @@ project. In case of bugs and if it is usefull to you please email mengucci@gmail
 #X obj -141 -15 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
 -1 -1 1 1;
 #X obj -137 271 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
--1 -1 1;
+-1 -1 0;
 #X text -118 268 pc camera;
 #X text -119 283 extra camera;
 #X obj -136 357 vradio 15 1 0 2 color_space empty color_space 0 -8
@@ -806,7 +806,7 @@ project. In case of bugs and if it is usefull to you please email mengucci@gmail
 #X obj 236 -21 cnv 15 220 600 empty empty empty 20 12 0 14 -261234
 -66577 0;
 #X obj 261 -15 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 259 344 hsl 100 15 35 880 0 0 f0 f0_init lowest_pitch -2 -8
 0 10 -260097 -1 -1 879 1;
 #X floatatom 256 365 10 0 0 0 - - -;
@@ -831,10 +831,10 @@ project. In case of bugs and if it is usefull to you please email mengucci@gmail
 #X text -119 298 extra camera 1;
 #X text -119 313 extra camera 2;
 #X obj 42 183 vradio 25 1 0 10 ref_scale_send ref_scale_rec Ref_Scale
-0 -8 0 10 -232576 -1 -1 0;
+0 -8 0 10 -232576 -1 -1 9;
 #X text 79 183 violet 320;
 #X obj 254 79 vradio 25 1 0 9 scale empty Escalas 0 -8 0 10 -257985
--1 -1 0;
+-1 -1 8;
 #X text 288 81 octave digital continuous;
 #X text 288 104 octave 12 notes (chromatic);
 #X text 288 129 26 to 96 (C1 e C7);
@@ -855,6 +855,6 @@ project. In case of bugs and if it is usefull to you please email mengucci@gmail
 #X text 73 386 orange 30;
 #X text 73 410 red 0;
 #X obj 377 537 tgl 25 0 PerformanceMode empty keyboard -5 32 0 10 -191407
--1 -1 0 1;
+-1 -1 1 1;
 #X connect 28 0 29 0;
 #X connect 33 0 34 0;
