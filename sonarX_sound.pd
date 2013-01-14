@@ -1,4 +1,4 @@
-#N canvas 645 184 631 419 10;
+#N canvas 518 113 631 419 10;
 #X declare -lib mrpeach;
 #X obj 238 44 import mrpeach;
 #X obj 1 49 unpackOSC;
@@ -12,7 +12,7 @@
 #X text 290 69 produces sound;
 #X obj 247 377 s scalaH;
 #X obj 244 242 vradio 15 1 0 9 empty empty empty 0 -8 0 10 -262144
--1 -1 4;
+-1 -1 8;
 #X text 265 254 octave 12 notes (cromatic);
 #X text 241 222 scale to output H values;
 #X text 262 238 octave digital continuous;
