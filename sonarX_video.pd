@@ -1,6 +1,6 @@
-#N canvas 291 79 631 621 10;
+#N canvas 283 83 631 621 10;
 #X declare -lib mrpeach;
-#N canvas 443 399 272 195 stuff 0;
+#N canvas 431 547 272 195 stuff 1;
 #N canvas 1 452 581 290 mostralinha 0;
 #X obj 41 41 gemhead;
 #X obj 41 138 translateXYZ 0 0 1;
@@ -94,7 +94,7 @@
 #X connect 6 0 8 0;
 #X connect 6 0 10 0;
 #X restore -443 35 pd EXT_CTRL;
-#N canvas 483 299 331 367 INIT 0;
+#N canvas 782 309 331 367 INIT 1;
 #X obj -303 3 loadbang;
 #X obj -300 156 r reset_f0;
 #X msg -302 275 110;
@@ -104,7 +104,8 @@
 #X msg -172 226 \; SustTime_init 100 \; SustOnOff_init 0 \;;
 #X obj -172 199 r SustTimeReset;
 #X msg -302 29 \; f0_init 110 \; SustTime_init 100 \; steps_init 480
-\; vidORstill_init 1 \; scanspeed 4 \; play_mov 0 \;;
+\; vidORstill_init 1 \; scanspeed 4 \; play_mov 0 \; end_line 1 \;
+;
 #X connect 0 0 8 0;
 #X connect 1 0 2 0;
 #X connect 2 0 5 0;
@@ -112,7 +113,7 @@
 #X connect 4 0 2 0;
 #X connect 7 0 6 0;
 #X restore -443 90 pd INIT;
-#N canvas 307 132 830 512 VIDEO_MAIN 0;
+#N canvas 299 136 830 512 VIDEO_MAIN 1;
 #X obj -292 302 pix_texture;
 #X obj -57 344 until;
 #X obj -57 368 f;
@@ -167,13 +168,13 @@
 #X obj 109 88 r reset_scan;
 #X obj -57 395 send pix_groupN;
 #X obj 359 278 pow 1.5;
-#N canvas 194 179 626 548 framesIN 0;
+#N canvas 192 180 626 548 framesIN 0;
 #X obj -11 466 outlet;
 #X obj -49 -25 gemhead;
 #X obj -110 -4 cnv 15 80 30 empty empty empty 20 12 0 14 -24198 -66577
 0;
 #X obj -100 4 pix_video;
-#N canvas 830 164 473 300 video_set 0;
+#N canvas 828 165 473 300 video_set 0;
 #X obj -154 239 outlet;
 #X msg -121 29 dimen 640 480;
 #X obj -298 8 r device;
@@ -186,282 +187,8 @@
 #X msg 32 92 colorspace Grey;
 #X obj 22 17 r color_space;
 #X obj 22 42 sel 0 1;
-#N canvas 507 121 572 549 properties 0;
-#X msg 41 203 enumProps;
-#X obj 31 21 cnv 15 400 80 empty empty readProperties 20 12 0 14 -233017
--66577 0;
-#X obj 39 47 hradio 15 1 0 9 \$0-propreadId \$0-propreadId empty 0
--8 0 10 -262144 -1 -1 0;
-#X obj 40 70 cnv 15 260 20 empty \$0-propreadName <none> 10 9 0 14
--203904 -66577 0;
-#N canvas 185 50 450 537 PropertyLogic 0;
-#N canvas 1408 84 774 460 id2property 0;
-#X obj 353 106 r \$0-info;
-#X obj 353 130 route proplist;
-#X obj 353 152 route read numread;
-#X obj 405 176 t b f;
-#X obj 353 174 list;
-#X obj 353 219 list prepend;
-#X msg 353 196 \$1;
-#X obj 353 239 t l l;
-#X obj 95 197 list prepend;
-#X obj 525 176 t b f;
-#X obj 473 174 list;
-#X obj 473 219 list prepend;
-#X msg 473 196 \$1;
-#X obj 473 239 t l l;
-#X obj 473 152 route write numwrite;
-#X obj 95 69 inlet readID;
-#X obj 225 70 inlet writeID;
-#X obj 123 378 outlet readName;
-#X obj 253 356 outlet writeName;
-#X obj 95 176 t b f;
-#X obj 95 219 list split;
-#X obj 123 266 symbol;
-#X msg 123 241 symbol \$1;
-#X obj 225 197 list prepend;
-#X obj 225 176 t b f;
-#X obj 225 219 list split;
-#X obj 253 266 symbol;
-#X msg 253 241 symbol \$1;
-#X obj 95 91 route float;
-#X obj 225 92 route float;
-#X msg 432 333 number \$1;
-#X msg 552 333 number \$1;
-#X obj 432 353 s \$0-propreadId;
-#X obj 552 353 s \$0-propwriteId;
-#X obj 602 254 t f f;
-#X msg 602 232 0;
-#X obj 602 211 loadbang;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 2 0 4 0;
-#X connect 2 1 3 0;
-#X connect 2 2 14 0;
-#X connect 3 0 5 1;
-#X connect 3 1 30 0;
-#X connect 4 0 6 0;
-#X connect 5 0 7 0;
-#X connect 6 0 5 0;
-#X connect 7 0 8 1;
-#X connect 7 1 5 1;
-#X connect 8 0 20 0;
-#X connect 9 0 11 1;
-#X connect 9 1 31 0;
-#X connect 10 0 12 0;
-#X connect 11 0 13 0;
-#X connect 12 0 11 0;
-#X connect 13 0 23 1;
-#X connect 13 1 11 1;
-#X connect 14 0 10 0;
-#X connect 14 1 9 0;
-#X connect 15 0 28 0;
-#X connect 16 0 29 0;
-#X connect 19 0 8 0;
-#X connect 19 1 20 1;
-#X connect 20 1 22 0;
-#X connect 21 0 17 0;
-#X connect 22 0 21 0;
-#X connect 23 0 25 0;
-#X connect 24 0 23 0;
-#X connect 24 1 25 1;
-#X connect 25 1 27 0;
-#X connect 26 0 18 0;
-#X connect 27 0 26 0;
-#X connect 28 0 19 0;
-#X connect 29 0 24 0;
-#X connect 30 0 32 0;
-#X connect 31 0 33 0;
-#X connect 34 0 30 0;
-#X connect 34 1 31 0;
-#X connect 35 0 34 0;
-#X connect 36 0 35 0;
-#X restore 188 192 pd id2property;
-#X obj 320 407 list prepend set;
-#X obj 320 429 list trim;
-#X obj 320 451 t b a;
-#N canvas 437 141 450 300 getProp 0;
-#X obj 44 177 s \$0-propreadName;
-#X msg 44 156 label \$1;
-#X msg 165 156 get \$1;
-#X obj 44 81 inlet;
-#X obj 165 178 outlet;
-#X obj 290 57 r \$0-info;
-#X obj 290 79 route prop;
-#N canvas 3 45 450 300 sroute 0;
-#X obj 73 12 inlet;
-#X obj 312 9 inlet;
-#X obj 73 113 outlet;
-#X obj 73 34 list split 1;
-#X obj 73 56 select s;
-#X obj 73 78 list prepend;
-#X connect 0 0 3 0;
-#X connect 1 0 4 1;
-#X connect 3 0 4 0;
-#X connect 3 1 5 1;
-#X connect 4 0 5 0;
-#X connect 5 0 2 0;
-#X restore 290 113 pd sroute;
-#X obj 44 123 t s s s;
-#X msg 290 226 label \$1;
-#X obj 290 247 s \$0-propreadValue;
-#X obj 290 135 route float;
-#X obj 290 157 makefilename %g;
-#X obj 106 29 loadbang;
-#X obj 106 51 t b b;
-#X msg 106 73 symbol <none>;
-#X msg 196 74 symbol --;
-#X connect 1 0 0 0;
-#X connect 2 0 4 0;
-#X connect 3 0 8 0;
-#X connect 5 0 6 0;
-#X connect 6 0 7 0;
-#X connect 7 0 11 0;
-#X connect 8 0 1 0;
-#X connect 8 1 2 0;
-#X connect 8 2 7 1;
-#X connect 9 0 10 0;
-#X connect 11 0 12 0;
-#X connect 12 0 9 0;
-#X connect 13 0 14 0;
-#X connect 14 0 15 0;
-#X connect 14 1 16 0;
-#X connect 15 0 1 0;
-#X connect 16 0 9 0;
-#X restore 320 318 pd getProp;
-#X obj 172 158 r \$0-propreadId;
-#X obj 282 158 r \$0-propwriteId;
-#N canvas 432 95 450 467 setProp 0;
-#X msg 44 156 label \$1;
-#X msg 165 156 get \$1;
-#X obj 44 31 inlet;
-#X obj 218 324 outlet;
-#X obj 290 57 r \$0-info;
-#X obj 290 79 route prop;
-#N canvas 4 50 450 300 sroute 0;
-#X obj 73 12 inlet;
-#X obj 312 9 inlet;
-#X obj 73 113 outlet;
-#X obj 73 34 list split 1;
-#X obj 73 56 select s;
-#X obj 73 78 list prepend;
-#X connect 0 0 3 0;
-#X connect 1 0 4 1;
-#X connect 3 0 4 0;
-#X connect 3 1 5 1;
-#X connect 4 0 5 0;
-#X connect 5 0 2 0;
-#X restore 290 113 pd sroute;
-#X obj 290 135 route float;
-#X obj 44 177 s \$0-propwriteName;
-#X obj 290 247 s \$0-propwriteValue;
-#X msg 290 226 set \$1;
-#X obj 50 276 r \$0-propwriteValue;
-#X obj 50 298 route float;
-#X obj 50 320 pack 0 s;
-#X msg 50 342 set \$2 \$1;
-#X obj 44 73 t s s s s;
-#X obj 127 27 loadbang;
-#X obj 127 49 t b b;
-#X msg 127 71 symbol <none>;
-#X connect 0 0 8 0;
-#X connect 1 0 3 0;
-#X connect 2 0 15 0;
-#X connect 4 0 5 0;
-#X connect 5 0 6 0;
-#X connect 6 0 7 0;
-#X connect 7 0 10 0;
-#X connect 10 0 9 0;
-#X connect 11 0 12 0;
-#X connect 12 0 13 0;
-#X connect 13 0 14 0;
-#X connect 14 0 3 0;
-#X connect 15 0 0 0;
-#X connect 15 1 1 0;
-#X connect 15 2 6 1;
-#X connect 15 3 13 1;
-#X connect 16 0 17 0;
-#X connect 17 0 18 0;
-#X connect 18 0 0 0;
-#X restore 199 315 pd setProp;
-#X obj 199 404 list prepend set;
-#X obj 199 426 list trim;
-#X obj 199 448 t b a;
-#X obj 199 361 list prepend get;
-#X obj 199 339 route get set;
-#X obj 309 361 list prepend set;
-#X obj 199 477 s \$0-propset;
-#X obj 320 480 s \$0-propget;
-#X obj 54 38 inlet;
-#X obj 54 66 s \$0-ctl;
-#X connect 0 0 4 0;
-#X connect 0 1 7 0;
-#X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 3 0 15 0;
-#X connect 3 1 15 0;
-#X connect 4 0 12 0;
-#X connect 5 0 0 0;
-#X connect 6 0 0 1;
-#X connect 7 0 12 0;
-#X connect 8 0 9 0;
-#X connect 9 0 10 0;
-#X connect 10 0 14 0;
-#X connect 10 1 14 0;
-#X connect 11 0 1 0;
-#X connect 12 0 11 0;
-#X connect 12 1 13 0;
-#X connect 13 0 8 0;
-#X connect 16 0 17 0;
-#X restore 41 526 pd PropertyLogic;
-#X obj 310 70 cnv 15 100 20 empty \$0-propreadValue -- 10 9 0 14 -261234
--66577 0;
-#X obj 31 111 cnv 15 400 80 empty empty writeProperties 20 12 0 14
--233017 -66577 0;
-#X obj 39 137 hradio 15 1 0 9 \$0-propwriteId \$0-propwriteId empty
-0 -8 0 10 -262144 -1 -1 0;
-#X obj 40 160 cnv 15 100 60 empty \$0-propwriteName <none> 20 12 0
-14 -233017 -66577 0;
-#X obj 311 160 nbx 5 20 -1e+37 1e+37 0 0 \$0-propwriteValue \$0-propwriteValue
-empty 0 -8 0 14 -204786 -1 -1 0 256;
-#X msg 66 315 get White Balance Temperature\, Auto;
-#X msg 83 392 set White Balance Temperature\, Auto 0;
-#X obj 66 294 r \$0-propget;
-#X obj 83 372 r \$0-propset;
-#X msg 87 340 get Hue Saturation;
-#X text 208 340 you can query several properties at once;
-#X text 146 295 query a (readable) property via a message "get <propname>"
-;
-#X text 161 372 set a (writable) property via a message "set <prop>
-<value>";
-#X text 70 224 this will return 2 lists of readable and writeable properties
-through the "info" outlet of [pix_video].;
-#X text 72 257 NOTE that propertynames are always single symbols that
-might contain spaces (and other weird characters);
-#X text 103 203 INIT: query names of all available properties;
-#X text 83 423 ATOMIC setting of multiple properties;
-#X msg 99 441 clearProps;
-#X msg 99 503 applyProps;
-#X msg 99 481 setProps Hue 10;
-#X msg 99 461 setProps Contrast 40;
-#X text 247 443 clear the current property list;
-#X text 247 461 add values to the property list (don't apply yet);
-#X text 247 479 add values to the property list (don't apply yet);
-#X text 247 499 apply current property list;
-#X connect 0 0 4 0;
-#X connect 10 0 4 0;
-#X connect 11 0 4 0;
-#X connect 12 0 10 0;
-#X connect 13 0 11 0;
-#X connect 14 0 4 0;
-#X connect 22 0 4 0;
-#X connect 23 0 4 0;
-#X connect 24 0 4 0;
-#X connect 25 0 4 0;
-#X restore -32 246 pd properties;
 #X msg -48 178 enumProps;
 #X obj -82 216 r \$0-ctl;
-#X msg -92 270 set White Balance Temperature\, Auto 0;
 #X connect 1 0 0 0;
 #X connect 2 0 4 0;
 #X connect 3 0 0 0;
@@ -474,8 +201,8 @@ might contain spaces (and other weird characters);
 #X connect 10 0 11 0;
 #X connect 11 0 8 0;
 #X connect 11 1 9 0;
+#X connect 12 0 0 0;
 #X connect 13 0 0 0;
-#X connect 14 0 0 0;
 #X restore -131 -25 pd video_set;
 #X obj 84 415 pix_background;
 #X obj 86 326 r play_mov;
@@ -533,11 +260,11 @@ might contain spaces (and other weird characters);
 #X obj -195 430 spigot;
 #X obj -162 350 r vidORstill;
 #X obj -162 370 == 0;
-#X obj 57 284 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 57 284 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 29 318 spigot;
 #X obj 58 249 r play_mov;
-#X obj -44 386 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj -44 386 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj -77 419 spigot;
 #X obj -42 357 == 0;
@@ -719,7 +446,7 @@ might contain spaces (and other weird characters);
 #X connect 53 0 54 0;
 #X connect 54 0 0 0;
 #X restore -442 127 pd VIDEO_MAIN;
-#N canvas 691 139 488 374 keyboard_ctrl 0;
+#N canvas 689 140 488 374 keyboard_ctrl 0;
 #X obj 4 -90 key;
 #X obj 55 37 - 48;
 #X obj 55 67 * -1;
@@ -744,8 +471,9 @@ might contain spaces (and other weird characters);
 #X obj 15 -53 spigot;
 #X obj 49 -72 r PerformanceMode;
 #X obj 8 -23 t b f;
-#X msg -126 18 \; NewFrame bang \; reset_scan bang \;;
+#X msg -126 18 \; NewFrame 1 \; reset_scan bang \;;
 #X connect 0 0 20 0;
+#X connect 0 0 4 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 6 0;
@@ -812,18 +540,16 @@ might contain spaces (and other weird characters);
 #X connect 1 8 2 0;
 #X connect 1 9 11 0;
 #X restore -323 7 pd img4ref_scale;
-#X restore 165 486 pd stuff;
-#X obj 49 -47 hradio 15 1 0 11 scanspeed scanspeedGUI scan_time 0 -8
-0 10 -203904 -1 -1 2;
-#X obj 47 418 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1 -1
-1 1;
-#X obj 46 457 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
+#X restore 173 491 pd stuff;
+#X obj 49 63 hradio 15 1 0 11 scanspeed scanspeedGUI scan_time 0 -8
+0 10 -203904 -1 -1 0;
+#X obj 52 -53 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
-#X obj 58 476 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
+#X obj 65 -35 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
 -1 -1 1 1;
-#X obj 129 -26 bng 20 250 50 0 reset_scan empty reset_scan 23 7 0 10
+#X obj 129 84 bng 20 250 50 0 reset_scan empty reset_scan 23 7 0 10
 -159808 -1 -1;
-#N canvas 738 79 450 663 HELP 0;
+#N canvas 736 79 450 663 HELP 0;
 #X text 20 2 General Description scans vertically frames and outputs
 the mean values of H S and V for 12 groups of pixels for each line
 and/or gray value for gray pixels;
@@ -864,16 +590,17 @@ of the frame;
 ;
 #X text 16 608 * keyboard: use keyboard to hear notes of the reference
 colors sounds \, press space bar to return to video analysis;
-#X restore 167 457 pd HELP;
-#N canvas 1 81 450 300 CREDITS 0;
-#X text 23 64 NOTE: this is a prototype \, created during an investigation
-project. In case of bugs and if it is usefull to you please email mengucci@gmail.com
-;
+#X restore 177 465 pd HELP;
+#N canvas 1 82 450 300 CREDITS 1;
+#X text 23 65 NOTE: this is a prototype \, created during the investigation
+project SeeThroughSound for the FCT-UNL Faculdade de Ciencias e Tecnologia
+(UTA-Exp/MAI/0025/2009 of FCT Portugal). In case of bugs and if it
+is usefull to you please email mengucci@gmail.com;
 #X restore 163 515 pd CREDITS;
 #X obj -146 -64 cnv 15 180 600 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj -136 -59 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
--1 -1 0 1;
+-1 -1 1 1;
 #X obj -132 270 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
 -1 -1 0;
 #X text -113 267 pc camera;
@@ -892,15 +619,15 @@ project. In case of bugs and if it is usefull to you please email mengucci@gmail
 #X obj -18 28 bng 30 250 50 0 open_still_img empty load_img -7 -8 0
 10 -232576 -1 -1;
 #X obj -79 -38 tgl 30 0 play_mov play_movGUI play_movement 32 7 0 10
--232576 -1 -1 0 1;
+-232576 -1 -1 1 1;
 #X obj -136 24 vradio 30 1 0 3 vidORstill vidORstill_init input 0 -10
 0 10 -4160 -1 -1 1;
 #X obj 241 -65 cnv 15 220 600 empty empty empty 20 12 0 14 -261234
 -66577 0;
 #X obj 266 -59 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 264 300 hsl 100 15 35 880 0 0 f0 f0_init lowest_pitch -2 -8
-0 10 -260097 -1 -1 879 1;
+0 10 -260097 -1 -1 2300 1;
 #X floatatom 261 321 10 0 0 0 - - -;
 #X obj 371 301 bng 15 250 50 1 reset_f0 empty reset_f0 17 7 0 10 -262144
 -1 -1;
@@ -909,24 +636,24 @@ project. In case of bugs and if it is usefull to you please email mengucci@gmail
 #X obj 259 490 tgl 30 0 save_sound empty save_sound 32 7 0 10 -258113
 -1 -1 0 1;
 #X obj 264 373 hsl 101 15 0 4000 0 1 SustTime SustTime_init SustainTime
--2 -8 0 10 -261682 -1 -1 250 1;
+-2 -8 0 10 -261682 -1 -1 4750 1;
 #X floatatom 261 394 10 0 0 0 - - -;
 #X obj 377 373 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
 -1 -1 0 1;
 #X obj 377 393 bng 15 250 50 0 SustTimeReset empty reset 17 7 0 10
 -262144 -1 -1;
-#X obj 46 16 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
+#X obj 56 146 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
 -1 -1 0;
-#X text 78 43 white_noise;
-#X text 78 69 phasor_groundtone;
-#X text 78 95 both;
+#X text 88 173 white_noise;
+#X text 88 199 phasor_groundtone;
+#X text 88 225 both;
 #X text -114 297 extra camera 1;
 #X text -114 312 extra camera 2;
-#X obj 47 149 vradio 25 1 0 10 ref_scale_send ref_scale_rec Ref_Scale
+#X obj 47 279 vradio 25 1 0 10 ref_scale_send ref_scale_rec Ref_Scale
 0 -8 0 10 -232576 -1 -1 0;
-#X text 84 149 violet 320;
+#X text 84 279 violet 320;
 #X obj 259 35 vradio 25 1 0 9 scale scaleGUI Escalas 0 -8 0 10 -257985
--1 -1 2;
+-1 -1 5;
 #X text 293 37 octave digital continuous;
 #X text 293 60 octave 12 notes (chromatic);
 #X text 293 85 26 to 96 (C1 e C7);
@@ -937,15 +664,15 @@ project. In case of bugs and if it is usefull to you please email mengucci@gmail
 #X text 294 136 scale of perfect 4ths;
 #X text 294 112 26/2000Hz;
 #X text -110 370 Gray;
-#X text 83 174 indigo 280;
-#X text 81 202 slate blue 257;
-#X text 78 225 sky blue 200;
-#X text 81 276 green 120;
-#X text 79 250 spring green 154;
-#X text 80 302 chartreuse 103;
-#X text 79 327 yellow 60;
-#X text 78 352 orange 30;
-#X text 78 376 red 0;
+#X text 83 304 indigo 280;
+#X text 81 332 slate blue 257;
+#X text 78 355 sky blue 200;
+#X text 81 406 green 120;
+#X text 79 380 spring green 154;
+#X text 80 432 chartreuse 103;
+#X text 79 457 yellow 60;
+#X text 78 482 orange 30;
+#X text 78 506 red 0;
 #X obj 382 493 tgl 25 0 PerformanceMode empty keyboard -5 32 0 10 -191407
 -1 -1 0 1;
 #X obj -18 87 bng 30 250 50 0 open_video empty load_vid -8 -8 0 10
@@ -955,5 +682,7 @@ project. In case of bugs and if it is usefull to you please email mengucci@gmail
 0 10 -4034 -1 -1 0 1;
 #X text -98 65 camera;
 #X text -99 90 stored vid;
-#X connect 26 0 27 0;
-#X connect 31 0 32 0;
+#X obj 143 -46 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1
+-1 1 1;
+#X connect 25 0 26 0;
+#X connect 30 0 31 0;
