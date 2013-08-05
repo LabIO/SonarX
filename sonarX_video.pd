@@ -1,4 +1,4 @@
-#N canvas 163 83 634 535 10;
+#N canvas 161 84 634 535 10;
 #X declare -lib iemnet -lib mrpeach;
 #X obj 54 63 hradio 15 1 0 11 scanspeed scanspeedGUI scan_time 0 -8
 0 10 -203904 -1 -1 0;
@@ -58,7 +58,7 @@
 #X floatatom 54 83 10 0 0 1 Frame_Scan_Time FrameScanTime -;
 #X obj 142 3 tgl 30 0 scango empty on/off_SCAN 32 7 0 10 -4160 -1 -1
 0 1;
-#N canvas 162 177 720 492 advanced 0;
+#N canvas 160 178 720 492 advanced 0;
 #X obj 71 167 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
 -1 -1 0;
 #X text 103 194 white_noise;
@@ -116,7 +116,7 @@
 #X connect 22 0 24 0;
 #X connect 23 0 22 0;
 #X restore 262 62 pd advanced;
-#N canvas 129 549 272 195 stuff 0;
+#N canvas 127 549 272 195 stuff 0;
 #N canvas 17 323 581 290 mostralinha 0;
 #X obj 41 21 gemhead;
 #X obj 41 138 translateXYZ 0 0 1;
@@ -222,7 +222,7 @@
 #X connect 6 0 8 0;
 #X connect 6 0 10 0;
 #X restore -443 35 pd EXT_CTRL;
-#N canvas 774 311 331 367 INIT 0;
+#N canvas 772 312 331 367 INIT 0;
 #X obj -303 3 loadbang;
 #X obj -300 156 r reset_f0;
 #X msg -302 275 110;
@@ -230,16 +230,16 @@
 #X obj -272 228 sel 2;
 #X obj -301 304 s f0_init;
 #X obj -172 199 r SustTimeReset;
+#X msg -172 226 \; SustTime_init 200 \; SustOnOff_init 0 \;;
 #X msg -302 29 \; f0_init 110 \; SustTime_init 100 \; steps_init 480
 \; vidORstill_init 1 \; scanspeed 4 \; play_mov 0 \; end_line 1 \;
-;
-#X msg -172 226 \; SustTime_init 200 \; SustOnOff_init 0 \;;
-#X connect 0 0 7 0;
+scaleGUI 7;
+#X connect 0 0 8 0;
 #X connect 1 0 2 0;
 #X connect 2 0 5 0;
 #X connect 3 0 4 0;
 #X connect 4 0 2 0;
-#X connect 6 0 8 0;
+#X connect 6 0 7 0;
 #X restore -443 90 pd INIT;
 #N canvas 1 137 792 599 VIDEO_MAIN 0;
 #X obj -292 442 pix_texture;
