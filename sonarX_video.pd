@@ -1,15 +1,15 @@
-#N canvas 165 82 634 535 10;
+#N canvas 163 83 634 535 10;
 #X declare -lib iemnet -lib mrpeach;
 #X obj 54 63 hradio 15 1 0 11 scanspeed scanspeedGUI scan_time 0 -8
 0 10 -203904 -1 -1 0;
 #X obj 51 -46 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
 #X obj 64 -28 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
--1 -1 1 1;
+-1 -1 0 1;
 #X obj -156 -72 cnv 15 190 520 empty empty IMAGE 70 12 0 14 -203904
 -66577 0;
 #X obj -144 -37 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
--1 -1 1 1;
+-1 -1 0 1;
 #X obj -140 292 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
 -1 -1 0;
 #X text -121 289 pc camera;
@@ -52,20 +52,20 @@
 #X text -106 87 camera;
 #X text -107 112 stored vid;
 #X obj 142 -39 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1
--1 1 1;
+-1 0 1;
 #X obj -142 162 nbx 7 15 0 999999 0 1 frames_speed empty frames_speed
 0 -8 0 10 -262144 -1 -1 2359.85 256;
 #X floatatom 54 83 10 0 0 1 Frame_Scan_Time FrameScanTime -;
 #X obj 142 3 tgl 30 0 scango empty on/off_SCAN 32 7 0 10 -4160 -1 -1
 0 1;
-#N canvas 164 176 720 492 advanced 0;
+#N canvas 162 177 720 492 advanced 0;
 #X obj 71 167 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
 -1 -1 0;
 #X text 103 194 white_noise;
 #X text 103 220 phasor_groundtone;
 #X text 103 246 both;
 #X obj 306 30 vradio 25 1 1 9 scale scaleGUI Escalas 0 -8 0 10 -257985
--1 -1 8;
+-1 -1 7;
 #X text 340 32 octave digital continuous;
 #X text 340 55 octave 12 notes (chromatic);
 #X text 342 181 pentatonic M;
