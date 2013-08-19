@@ -1,4 +1,4 @@
-#N canvas 574 161 631 419 10;
+#N canvas 624 217 631 419 10;
 #X declare -lib mrpeach;
 #X obj 238 44 import mrpeach;
 #X obj 1 49 unpackOSC;
@@ -12,7 +12,7 @@
 #X text 290 69 produces sound;
 #X obj 113 393 s scalaH;
 #X obj 110 258 vradio 15 1 0 9 empty empty empty 0 -8 0 10 -262144
--1 -1 0;
+-1 -1 7;
 #X text 131 270 octave 12 notes (cromatic);
 #X text 107 238 scale to output H values;
 #X text 128 254 octave digital continuous;
@@ -38,11 +38,12 @@ tone;
 #X obj 425 291 s functVH-set;
 #X obj 385 314 s invertH-set;
 #X obj 457 272 s color_shift;
-#X floatatom 435 172 5 0 0 0 - - -;
 #X obj 56 103 routeOSC /Synth /State /Scale /f0 /0cross /save_sound
 /tikOnOff /Gmode /SustOnOff /SustTime /RefScale /c_line /invertH /functVH
 /color_shift-set;
-#X connect 1 0 35 0;
+#X obj 564 92 vsl 15 128 0 1 0 0 V empty volume 0 -9 0 10 -262144 -1
+-1 9300 1;
+#X connect 1 0 34 0;
 #X connect 2 0 1 0;
 #X connect 3 0 5 1;
 #X connect 4 0 5 0;
@@ -53,19 +54,18 @@ tone;
 #X connect 11 0 10 0;
 #X connect 22 0 24 0;
 #X connect 24 0 23 0;
-#X connect 35 0 6 0;
-#X connect 35 1 19 0;
-#X connect 35 2 11 0;
-#X connect 35 3 20 0;
-#X connect 35 4 15 0;
-#X connect 35 5 16 0;
-#X connect 35 6 17 0;
-#X connect 35 7 26 0;
-#X connect 35 8 27 0;
-#X connect 35 9 28 0;
-#X connect 35 10 29 0;
-#X connect 35 11 30 0;
-#X connect 35 12 32 0;
-#X connect 35 13 31 0;
-#X connect 35 14 33 0;
-#X connect 35 14 34 0;
+#X connect 34 0 6 0;
+#X connect 34 1 19 0;
+#X connect 34 2 11 0;
+#X connect 34 3 20 0;
+#X connect 34 4 15 0;
+#X connect 34 5 16 0;
+#X connect 34 6 17 0;
+#X connect 34 7 26 0;
+#X connect 34 8 27 0;
+#X connect 34 9 28 0;
+#X connect 34 10 29 0;
+#X connect 34 11 30 0;
+#X connect 34 12 32 0;
+#X connect 34 13 31 0;
+#X connect 34 14 33 0;
