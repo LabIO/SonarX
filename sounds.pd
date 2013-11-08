@@ -1,8 +1,8 @@
-#N canvas 139 110 1089 606 10;
-#X obj 689 -3154 cnv 15 350 300 empty empty empty 20 12 0 14 -204786
+#N canvas 412 79 1064 566 10;
+#X obj 689 -3154 cnv 15 350 200 empty empty empty 20 12 0 14 -204786
 -66577 0;
 #X obj 423 -3145 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2090 1;
+-1 -1 3949 1;
 #X obj 230 -3278 catch~ R;
 #X obj 161 -3278 catch~ L;
 #X obj 205 -3073 hip~ 5;
@@ -160,7 +160,6 @@
 #X connect 17 9 11 0;
 #X connect 18 0 14 0;
 #X restore 926 -3318 pd cor_sample;
-#X obj 910 -3281 loadbang;
 #X obj 146 -3110 lop~ 20000;
 #X obj 218 -3111 lop~ 20000;
 #X obj 203 -2848 dac~;
@@ -240,47 +239,46 @@
 #X floatatom 86 -3162 8 0 0 0 - - -;
 #X obj 86 -3255 vsl 15 60 0 186 0 0 empty empty empty 0 -9 0 10 -99865
 -1 -1 0 1;
-#X obj 874 -2888 tabwrite functionVH;
-#X obj 894 -3041 counter 255;
-#X obj 874 -2964 / 255;
-#X obj 895 -3063 until;
-#X obj 896 -3002 t f f;
-#X obj 872 -2940 * 1.8;
-#X obj 872 -2918 + 0.2;
-#X obj 896 -3121 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 850 -3075 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 705 -2994 reset functionVH;
-#X obj 401 -3386 playHSVpan 3 -25.713;
+#X text 705 -3124 reset functionVH;
 #X obj 464 -3164 r V;
-#N canvas 631 134 501 477 sound&tables 0;
-#X obj 69 -409 inlet;
-#X obj 182 -327 table midi4th_scale;
-#X msg 111 -300 \; midi4th_scale 0 1 6 11 16 21 26 31 36 41 46 51 56
+#N canvas 134 260 805 493 sound&tables 0;
+#X obj -120 -232 table midi4th_scale;
+#X msg 163 -110 \; midi4th_scale 0 1 6 11 16 21 26 31 36 41 46 51 56
 61 66 71 76 81 86 91 96 101 106 111 116;
-#X msg 103 -167 \; just_intonation_scale 0 1 1.125 1.25 1.33333 1.5
+#X msg 147 -40 \; just_intonation_scale 0 1 1.125 1.25 1.33333 1.5
 1.66667 1.875 2 2.25 2.5 2.66667 3 3.3333 3.75 4;
-#X msg 103 -209 \; color_shift_set 0.062;
+#X msg 132 24 \; color_shift_set 0.062;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array just_intonation_scale 15 float 3;
 #A 0 1 1.125 1.25 1.33333 1.5 1.66667 1.875 2 2.25 2.5 2.66667 3 3.3333
 3.75 4;
 #X coords 0 4 15 0 200 140 1 0 0;
-#X restore 104 -102 graph;
-#X msg 113 -379 \; pd dsp 1;
-#X connect 0 0 2 0;
-#X connect 0 0 6 0;
-#X connect 0 0 4 0;
-#X connect 0 0 3 0;
+#X restore -127 -117 graph;
+#X msg 195 -327 \; pd dsp 1;
+#X obj 132 -387 loadbang;
+#X obj 132 -360 t b b b b b;
+#X obj -117 -257 table;
+#X obj -116 -196 table Indian-Scale;
+#X msg 179 -194 \; Indian-Scale 0 1 1.0535 1.06667 1.11111 1.125 1.18519
+1.2 1.25 1.26562 1.33333 1.35 1.40625 1.42222 1.5 1.58025 1.6 1.66667
+1.6875 1.7778 1.8 1.875 1.89844;
+#X connect 6 0 7 0;
+#X connect 7 0 3 0;
+#X connect 7 1 2 0;
+#X connect 7 2 1 0;
+#X connect 7 3 10 0;
+#X connect 7 4 5 0;
 #X restore 910 -3257 pd sound&tables;
 #X msg 444 -3217 0.7 50;
-#X msg 710 -2920 \; functionVH const 0.5;
-#X obj 896 -3147 r reset_fVH;
-#X obj 710 -2969 r set_fVH_linear;
+#X msg 710 -3050 \; functionVH const 0.5;
+#X obj 850 -3101 r reset_fVH;
+#X obj 710 -3099 r set_fVH_linear;
 #X text 466 -3273 Volume (on/off) receives state from video patch;
 #X text 38 -3280 low pass freq;
 #X obj 230 -3252 *~ 1;
 #X obj 160 -3254 *~ 1;
-#X msg 895 -3085 256;
 #N canvas 1 144 712 393 reverse_arrayH 0;
 #X obj 80 79 bng 15 250 50 0 empty empty Reverse_me 18 7 0 8 -262144
 -1 -1;
@@ -365,7 +363,12 @@
 #X connect 38 0 39 0;
 #X connect 39 0 0 0;
 #X restore 921 -3207 pd reverse_arrayH;
+#X obj 139 -2936 compressore~;
+#X obj 227 -2935 compressore~;
+#X msg 482 -2914 \; functionVH const 0;
+#X obj 837 -3350 playHSVpan 14 45;
 #X obj 534 -3386 playHSVpan 4 -19.284;
+#X obj 401 -3386 playHSVpan 3 -25.713;
 #X obj 15 -3391 playHSVpan 0 -45;
 #X obj 129 -3389 playHSVpan 1 -38.571;
 #X obj 266 -3388 playHSVpan 2 -32.142;
@@ -378,49 +381,41 @@
 #X obj 448 -3348 playHSVpan 11 25.713;
 #X obj 578 -3347 playHSVpan 12 32.142;
 #X obj 707 -3348 playHSVpan 13 38.571;
-#X obj 837 -3350 playHSVpan 14 45;
-#X obj 139 -2936 compressore~;
-#X obj 227 -2935 compressore~;
-#X connect 1 0 41 1;
-#X connect 1 0 42 1;
-#X connect 2 0 41 0;
-#X connect 3 0 42 0;
-#X connect 4 0 17 1;
-#X connect 4 0 60 0;
-#X connect 5 0 17 0;
-#X connect 5 0 59 0;
+#X msg 850 -3051 \; functionVH cosinesum 5 1 1 \; functionVH resize
+256;
+#X msg 475 -2972 \; functionVH cosinesum 1023 1 1 \; functionVH resize
+230;
+#X connect 1 0 32 1;
+#X connect 1 0 33 1;
+#X connect 2 0 32 0;
+#X connect 3 0 33 0;
+#X connect 4 0 16 1;
+#X connect 4 0 36 0;
+#X connect 5 0 16 0;
+#X connect 5 0 35 0;
 #X connect 6 0 1 0;
 #X connect 7 0 8 0;
-#X connect 7 1 35 0;
+#X connect 7 1 26 0;
 #X connect 8 0 6 0;
 #X connect 11 0 7 0;
-#X connect 13 0 34 0;
-#X connect 14 0 5 0;
-#X connect 15 0 4 0;
-#X connect 17 0 59 0;
-#X connect 17 1 60 0;
-#X connect 18 0 16 0;
-#X connect 19 0 16 1;
-#X connect 20 0 21 0;
-#X connect 21 0 15 1;
-#X connect 21 0 14 1;
-#X connect 22 0 20 0;
-#X connect 24 0 27 0;
-#X connect 25 0 28 0;
-#X connect 26 0 24 0;
-#X connect 27 0 25 0;
-#X connect 27 1 23 1;
-#X connect 28 0 29 0;
-#X connect 29 0 23 0;
-#X connect 30 0 43 0;
-#X connect 33 0 1 0;
-#X connect 35 0 6 0;
-#X connect 37 0 30 0;
-#X connect 38 0 36 0;
-#X connect 41 0 15 0;
-#X connect 42 0 14 0;
-#X connect 43 0 26 0;
-#X connect 59 0 18 0;
-#X connect 59 0 10 0;
-#X connect 60 0 19 0;
-#X connect 60 0 10 1;
+#X connect 13 0 5 0;
+#X connect 14 0 4 0;
+#X connect 16 0 35 0;
+#X connect 16 1 36 0;
+#X connect 17 0 15 0;
+#X connect 18 0 15 1;
+#X connect 19 0 20 0;
+#X connect 20 0 14 1;
+#X connect 20 0 13 1;
+#X connect 21 0 19 0;
+#X connect 22 0 53 0;
+#X connect 24 0 1 0;
+#X connect 26 0 6 0;
+#X connect 28 0 22 0;
+#X connect 29 0 27 0;
+#X connect 32 0 14 0;
+#X connect 33 0 13 0;
+#X connect 35 0 17 0;
+#X connect 35 0 10 0;
+#X connect 36 0 18 0;
+#X connect 36 0 10 1;

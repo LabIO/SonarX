@@ -1,13 +1,13 @@
-#N canvas 1994 56 603 371 10;
+#N canvas 40 79 603 371 10;
 #X declare -lib iemnet -lib mrpeach;
 #X obj 54 -43 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
 #X obj 67 -25 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
--1 -1 1 1;
+-1 -1 0 1;
 #X obj -153 -69 cnv 15 190 360 empty empty IMAGE 70 12 0 14 -203904
 -66577 0;
 #X obj -141 -34 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
--1 -1 1 1;
+-1 -1 0 1;
 #X obj -137 208 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
 -1 -1 0;
 #X text -113 205 pc camera;
@@ -15,11 +15,11 @@
 #X obj -23 53 bng 30 250 50 0 open_still_img empty load_img -7 -8 0
 10 -232576 -1 -1;
 #X obj -141 49 vradio 30 1 0 3 vidORstill vidORstill_init input 0 -10
-0 10 -4160 -1 -1 1;
+0 10 -4160 -1 -1 0;
 #X obj 290 -69 cnv 15 150 360 empty empty SOUND 70 12 0 14 -261234
 -66577 0;
 #X obj 297 -39 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 299 158 tgl 30 0 save_sound empty save_sound 32 7 0 10 -258113
 -1 -1 0 1;
 #X text -114 235 extra camera 1;
@@ -34,48 +34,43 @@
 #X text -103 90 camera;
 #X text -104 115 stored vid;
 #X obj 145 -36 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1
--1 1 1;
+-1 0 1;
 #X obj -139 165 nbx 7 15 0 999999 0 1 frames_speed empty frames_speed
 0 -8 0 10 -262144 -1 -1 17 256;
 #X floatatom 65 269 10 0 0 1 Frame_Scan_Time FrameScanTime -;
 #X obj 212 197 tgl 30 0 scango scango-set on/off_SCAN -15 40 0 10 -232576
 -1 -1 1 1;
-#N canvas 447 196 841 522 advanced 0;
+#N canvas 130 306 841 522 advanced 0;
 #X obj 37 145 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
 -1 -1 0;
 #X text 69 172 white_noise;
 #X text 69 198 phasor_groundtone;
 #X text 69 224 both;
 #X obj 273 -8 vradio 25 1 1 9 scale scaleGUI Escalas 0 -8 0 10 -257985
--1 -1 7;
+-1 -1 2;
 #X text 308 -7 octave digital continuous;
-#X text 308 16 octave 12 notes (chromatic);
-#X text 310 142 pentatonic M;
-#X text 309 192 2 octaves continuos;
-#X text 309 92 scale of perfect 4ths;
-#X text 309 68 26/2000Hz;
-#X text 307 44 octave 19 notes (chromatic);
-#X text 309 167 just intonation (2 octaves);
+#X text 308 18 octave 12 notes (chromatic);
+#X text 308 143 pentatonic M;
+#X text 308 193 2 octaves continuos;
+#X text 308 93 scale of perfect 4ths;
+#X text 308 68 26/2000Hz;
+#X text 308 168 just intonation (2 octaves);
 #X obj 36 4 tgl 50 0 invertH empty invert_Hue 55 7 0 10 -86277 -1 -1
 0 1;
 #X obj 36 65 tgl 50 0 functVH empty Vol-Hue_function 55 7 0 10 -86853
 -1 -1 0 1;
 #X obj 39 339 hsl 100 15 0 880 0 0 f0 f0_init empty -2 -8 0 10 -260097
--1 -1 675 1;
+-1 -1 1237 1;
 #X floatatom 36 360 10 0 0 0 - - -;
 #X obj 146 340 bng 15 250 50 1 reset_f0 empty reset_f0 17 7 0 10 -262144
 -1 -1;
 #X obj 40 432 hsl 101 15 0 1000 0 1 SustTime SustTime_init SustainTime
--2 -8 0 10 -261682 -1 -1 1000 1;
+-2 -8 0 10 -261682 -1 -1 1588 1;
 #X floatatom 37 453 10 0 0 0 - - -;
 #X obj 153 432 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
 -1 -1 0 1;
 #X obj 153 452 bng 15 250 50 0 SustTimeReset empty reset 17 7 0 10
 -262144 -1 -1;
-#X floatatom 97 395 5 0 0 0 - - -;
-#X obj 75 394 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 132 396 s SustTime_init;
 #X obj 40 277 hsl 128 15 0 1 0 1 color_shift color_shift-r color_shift_value
 -2 -8 0 10 -204800 -1 -1 190 1;
 #X obj -132 0 tgl 30 0 play_mov play_movGUI play_movement 32 7 0 10
@@ -99,25 +94,28 @@
 -1 -1 0 1;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array View-H 15 float 3;
-#A 0 0.536458 0.53125 0.525641 0.516667 0.559524 0.625 0.833333 0 0.0144928
-0.0245098 0.981481 0.666667 0.666667 0.625 0.0833333;
+#A 0 0.111111 0.198413 0.965812 0.0294118 0.103175 0.544304 0.611111
+0.5375 0.5 0.946667 0.00757576 0.0128205 0.0263158 0.0476191 0.32963
+;
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 535 -21 graph;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array View-S 15 float 3;
-#A 0 0.278261 0.163265 0.131313 0.0970874 0.125 0.0733945 0.0337079
-0.5 0.676471 0.944444 1 1 0.666667 0.421053 0.151515;
+#A 0 0.040724 0.101942 0.201031 0.0994152 0.293023 0.451429 0.209302
+0.201005 0.142132 0.123762 0.103774 0.288889 0.0822511 0.092511 0.379747
+;
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 533 151 graph;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array View-V 15 float 3;
-#A 0 0.45098 0.384314 0.388235 0.403922 0.439216 0.427451 0.34902 0.141176
-0.133333 0.141176 0.0352941 0.00392157 0.0117647 0.14902 0.258824;
+#A 0 0.866667 0.807843 0.760784 0.670588 0.843137 0.686275 0.67451
+0.780392 0.772549 0.792157 0.831373 0.705882 0.905882 0.890196 0.929412
+;
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 531 322 graph;
 #X obj 373 323 tgl 30 0 view_tableHSV empty view_tableHSV 32 7 0 10
 -260097 -1 -1 0 1;
-#X text 308 117 2 octaves chromatic;
+#X text 308 118 2 octaves chromatic;
 #X text 109 311 lowest_pitch f0 in Hz;
 #N canvas 123 124 535 537 MouseData 0;
 #X obj 214 -1 cnv 15 100 60 empty empty empty 20 12 0 14 -24198 -66577
@@ -209,12 +207,11 @@
 #X floatatom 280 425 5 0 0 0 - - -;
 #X obj 280 448 s scanspeed;
 #X text 277 404 set scantime;
-#X connect 15 0 16 0;
-#X connect 18 0 19 0;
-#X connect 22 0 24 0;
-#X connect 23 0 22 0;
-#X connect 36 0 15 0;
-#X connect 48 0 49 0;
+#X text 308 43 Indian Scale (2 octaves);
+#X connect 14 0 15 0;
+#X connect 17 0 18 0;
+#X connect 32 0 14 0;
+#X connect 44 0 45 0;
 #X restore 297 21 pd advanced;
 #N canvas 463 441 265 171 stuff 0;
 #N canvas 32 170 938 490 mostralinha 0;
@@ -395,7 +392,7 @@
 0;
 #X text 101 -97 start / stop;
 #X obj 125 -76 tgl 30 0 empty startstop empty 17 7 0 10 -4034 -1 -1
-1 1;
+0 1;
 #X text 253 553 sends signal of end line;
 #X obj -325 -2 pix_buffer_write frame;
 #X msg -182 -38 1;
@@ -1034,11 +1031,11 @@ project SeeThroughSound for the FCT-UNL Faculdade de Ciencias e Tecnologia
 is usefull to you please email mengucci@gmail.com;
 #X restore 297 102 pd CREDITS;
 #X obj 168 85 vsl 15 128 1 0 0 0 man_scan empty empty 0 -9 0 20 -232576
--1 -1 0 1;
+-1 -1 5200 1;
 #X text 157 213 manual;
 #X text 158 223 scan;
 #X obj 62 61 vradio 15 1 0 13 scanspeed scanspeedGUI scan_time 0 -8
-0 10 -203904 -1 -1 4;
+0 10 -203904 -1 -1 12;
 #X text 82 60 fast;
 #X text 82 237 slow;
 #X text 129 -73 versione 1 novembro 2013;
