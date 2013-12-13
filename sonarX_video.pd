@@ -1,44 +1,44 @@
-#N canvas 40 79 603 371 10;
+#N canvas 38 80 603 371 10;
 #X declare -lib iemnet -lib mrpeach;
-#X obj 54 -43 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
+#X obj 57 -40 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
-#X obj 67 -25 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
--1 -1 0 1;
-#X obj -153 -69 cnv 15 190 360 empty empty IMAGE 70 12 0 14 -203904
+#X obj 70 -22 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
+-1 -1 1 1;
+#X obj -150 -66 cnv 15 190 360 empty empty IMAGE 70 12 0 14 -203904
 -66577 0;
-#X obj -141 -34 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
--1 -1 0 1;
-#X obj -137 208 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
+#X obj -138 -31 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
+-1 -1 1 1;
+#X obj -134 211 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
 -1 -1 0;
-#X text -113 205 pc camera;
-#X text -114 220 extra camera;
-#X obj -23 53 bng 30 250 50 0 open_still_img empty load_img -7 -8 0
+#X text -110 208 pc camera;
+#X text -111 223 extra camera;
+#X obj -20 56 bng 30 250 50 0 open_still_img empty load_img -7 -8 0
 10 -232576 -1 -1;
-#X obj -141 49 vradio 30 1 0 3 vidORstill vidORstill_init input 0 -10
-0 10 -4160 -1 -1 0;
-#X obj 290 -69 cnv 15 150 360 empty empty SOUND 70 12 0 14 -261234
+#X obj -138 52 vradio 30 1 0 3 vidORstill vidORstill_init input 0 -10
+0 10 -4160 -1 -1 1;
+#X obj 293 -66 cnv 15 150 360 empty empty SOUND 70 12 0 14 -261234
 -66577 0;
-#X obj 297 -39 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
+#X obj 300 -36 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
+-1 -1 1 1;
+#X obj 302 161 tgl 30 0 save_sound empty save_sound 32 7 0 10 -258113
 -1 -1 0 1;
-#X obj 299 158 tgl 30 0 save_sound empty save_sound 32 7 0 10 -258113
--1 -1 0 1;
-#X text -114 235 extra camera 1;
-#X text -114 250 extra camera 2;
-#X obj 299 198 tgl 30 0 PerformanceMode empty keyboard_control 35 10
+#X text -111 238 extra camera 1;
+#X text -111 253 extra camera 2;
+#X obj 302 201 tgl 30 0 PerformanceMode empty keyboard_control 35 10
 0 10 -191407 -1 -1 0 1;
-#X obj -23 112 bng 30 250 50 0 open_video empty load_vid -8 -8 0 10
+#X obj -20 115 bng 30 250 50 0 open_video empty load_vid -8 -8 0 10
 -232576 -1 -1;
-#X text -104 59 still img;
-#X obj -26 161 tgl 15 0 PausePlay_stored_vid empty pause/play -5 -7
+#X text -101 62 still img;
+#X obj -23 164 tgl 15 0 PausePlay_stored_vid empty pause/play -5 -7
 0 10 -4034 -1 -1 0 1;
-#X text -103 90 camera;
-#X text -104 115 stored vid;
-#X obj 145 -36 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1
--1 0 1;
-#X obj -139 165 nbx 7 15 0 999999 0 1 frames_speed empty frames_speed
+#X text -100 93 camera;
+#X text -101 118 stored vid;
+#X obj 148 -33 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1
+-1 1 1;
+#X obj -136 168 nbx 7 15 0 999999 0 1 frames_speed empty frames_speed
 0 -8 0 10 -262144 -1 -1 17 256;
-#X floatatom 65 269 10 0 0 1 Frame_Scan_Time FrameScanTime -;
-#X obj 212 197 tgl 30 0 scango scango-set on/off_SCAN -15 40 0 10 -232576
+#X floatatom 68 272 10 0 0 1 Frame_Scan_Time FrameScanTime -;
+#X obj 215 200 tgl 30 0 scango scango-set on/off_SCAN -15 40 0 10 -232576
 -1 -1 1 1;
 #N canvas 130 306 841 522 advanced 0;
 #X obj 37 145 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
@@ -60,12 +60,12 @@
 #X obj 36 65 tgl 50 0 functVH empty Vol-Hue_function 55 7 0 10 -86853
 -1 -1 0 1;
 #X obj 39 339 hsl 100 15 0 880 0 0 f0 f0_init empty -2 -8 0 10 -260097
--1 -1 1237 1;
+-1 -1 675 1;
 #X floatatom 36 360 10 0 0 0 - - -;
 #X obj 146 340 bng 15 250 50 1 reset_f0 empty reset_f0 17 7 0 10 -262144
 -1 -1;
 #X obj 40 432 hsl 101 15 0 1000 0 1 SustTime SustTime_init SustainTime
--2 -8 0 10 -261682 -1 -1 1588 1;
+-2 -8 0 10 -261682 -1 -1 1000 1;
 #X floatatom 37 453 10 0 0 0 - - -;
 #X obj 153 432 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
 -1 -1 0 1;
@@ -212,7 +212,7 @@
 #X connect 17 0 18 0;
 #X connect 32 0 14 0;
 #X connect 44 0 45 0;
-#X restore 297 21 pd advanced;
+#X restore 300 24 pd advanced;
 #N canvas 463 441 265 171 stuff 0;
 #N canvas 32 170 938 490 mostralinha 0;
 #X obj 166 -193 gemhead;
@@ -392,7 +392,7 @@
 0;
 #X text 101 -97 start / stop;
 #X obj 125 -76 tgl 30 0 empty startstop empty 17 7 0 10 -4034 -1 -1
-0 1;
+1 1;
 #X text 253 553 sends signal of end line;
 #X obj -325 -2 pix_buffer_write frame;
 #X msg -182 -38 1;
@@ -981,7 +981,7 @@
 #X connect 1 8 3 0;
 #X connect 1 9 2 0;
 #X restore -323 7 pd img4ref_scale;
-#X restore 297 48 pd stuff;
+#X restore 300 51 pd stuff;
 #N canvas 736 79 450 663 HELP 0;
 #X text 20 2 General Description scans vertically frames and outputs
 the mean values of H S and V for 12 groups of pixels for each line
@@ -1023,19 +1023,19 @@ of the frame;
 ;
 #X text 16 608 * keyboard: use keyboard to hear notes of the reference
 colors sounds \, press space bar to return to video analysis;
-#X restore 297 75 pd HELP;
+#X restore 300 78 pd HELP;
 #N canvas 1 81 450 300 CREDITS 0;
 #X text 23 65 NOTE: this is a prototype \, created during the investigation
 project SeeThroughSound for the FCT-UNL Faculdade de Ciencias e Tecnologia
 (UTA-Exp/MAI/0025/2009 of FCT Portugal). In case of bugs and if it
 is usefull to you please email mengucci@gmail.com;
-#X restore 297 102 pd CREDITS;
-#X obj 168 85 vsl 15 128 1 0 0 0 man_scan empty empty 0 -9 0 20 -232576
--1 -1 5200 1;
-#X text 157 213 manual;
-#X text 158 223 scan;
-#X obj 62 61 vradio 15 1 0 13 scanspeed scanspeedGUI scan_time 0 -8
-0 10 -203904 -1 -1 12;
-#X text 82 60 fast;
-#X text 82 237 slow;
-#X text 129 -73 versione 1 novembro 2013;
+#X restore 300 105 pd CREDITS;
+#X obj 171 88 vsl 15 128 1 0 0 0 man_scan empty empty 0 -9 0 20 -232576
+-1 -1 0 1;
+#X text 160 216 manual;
+#X text 161 226 scan;
+#X obj 65 64 vradio 15 1 0 13 scanspeed scanspeedGUI scan_time 0 -8
+0 10 -203904 -1 -1 4;
+#X text 85 63 fast;
+#X text 85 240 slow;
+#X text 132 -70 versione 1 novembro 2013;
