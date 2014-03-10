@@ -1,11 +1,11 @@
-#N canvas 176 96 1043 460 10;
+#N canvas 1576 342 1043 460 10;
 #X declare -lib mrpeach;
 #X obj 687 -390 import mrpeach;
 #X obj 469 -394 sounds;
 #X text 10 -397 play_sonarX: gets HSV triplets from SonarX and plays
 the corresponding oscillators \, while the f0 is the "gray" ground
 tone;
-#N canvas 483 243 578 427 recOSC 0;
+#N canvas 481 244 578 427 recOSC 0;
 #X obj 1 49 unpackOSC;
 #X obj 1 11 udpreceive 9998;
 #X obj 26 209 makefilename Synth_%d;
@@ -14,7 +14,7 @@ tone;
 #X obj 3 144 unpack f f f f;
 #X obj 113 393 s scalaH;
 #X obj 110 258 vradio 15 1 0 9 empty empty empty 0 -8 0 10 -262144
--1 -1 7;
+-1 -1 0;
 #X text 131 270 octave 12 notes (cromatic);
 #X text 107 238 scale to output H values;
 #X text 128 254 octave digital continuous;
@@ -109,8 +109,8 @@ tone;
 -66577 0;
 #X text 414 -299 level \, dB;
 #X text 653 -291 liveness \, 0-100;
-#X obj 428 -266 vsl 15 60 0 100 0 1 empty empty empty 0 -9 0 10 -4032
--1 -1 5900 1;
+#X obj 428 -266 vsl 15 60 0 100 0 0 empty empty empty 0 -9 0 10 -4032
+-1 -1 4900 1;
 #X obj 428 -175 s revLev;
 #X floatatom 428 -196 0 0 100 0 - - -;
 #X obj 691 -269 vsl 15 60 0 100 0 1 empty empty empty 0 -9 0 10 -257985
@@ -144,7 +144,7 @@ hue;
 #X connect 5 1 3 0;
 #X coords 0 -1 1 1 379 45 1 100 100;
 #X restore 4 -17 pd imagem;
-#N canvas 666 128 553 585 midi 0;
+#N canvas 664 129 553 585 midi 0;
 #X obj 41 -21 r 0cross;
 #X obj 115 131 timer;
 #X obj 115 65 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -288,7 +288,7 @@ hue;
 #X obj 201 -271 s VoiceType;
 #X obj 201 -309 tgl 30 0 empty functVH-set empty 17 7 0 10 -86853 -1
 -1 0 1;
-#X text 821 -368 versione 13 Dezembro 2013;
+#X text 821 -368 versione 10 Março 2014;
 #X connect 7 0 6 0;
 #X connect 8 0 9 0;
 #X connect 15 0 17 0;

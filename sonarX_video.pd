@@ -1,4 +1,4 @@
-#N canvas 38 80 603 371 10;
+#N canvas 2116 54 603 371 10;
 #X declare -lib iemnet -lib mrpeach;
 #X obj 57 -40 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
@@ -7,7 +7,7 @@
 #X obj -150 -66 cnv 15 190 360 empty empty IMAGE 70 12 0 14 -203904
 -66577 0;
 #X obj -138 -31 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
--1 -1 1 1;
+-1 -1 0 1;
 #X obj -134 211 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
 -1 -1 0;
 #X text -110 208 pc camera;
@@ -15,7 +15,7 @@
 #X obj -20 56 bng 30 250 50 0 open_still_img empty load_img -7 -8 0
 10 -232576 -1 -1;
 #X obj -138 52 vradio 30 1 0 3 vidORstill vidORstill_init input 0 -10
-0 10 -4160 -1 -1 1;
+0 10 -4160 -1 -1 0;
 #X obj 293 -66 cnv 15 150 360 empty empty SOUND 70 12 0 14 -261234
 -66577 0;
 #X obj 300 -36 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
@@ -40,14 +40,14 @@
 #X floatatom 68 272 10 0 0 1 Frame_Scan_Time FrameScanTime -;
 #X obj 215 200 tgl 30 0 scango scango-set on/off_SCAN -15 40 0 10 -232576
 -1 -1 1 1;
-#N canvas 130 306 841 522 advanced 0;
+#N canvas 1838 474 841 522 advanced 0;
 #X obj 37 145 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
 -1 -1 0;
 #X text 69 172 white_noise;
 #X text 69 198 phasor_groundtone;
 #X text 69 224 both;
 #X obj 273 -8 vradio 25 1 1 9 scale scaleGUI Escalas 0 -8 0 10 -257985
--1 -1 2;
+-1 -1 4;
 #X text 308 -7 octave digital continuous;
 #X text 308 18 octave 12 notes (chromatic);
 #X text 308 143 pentatonic M;
@@ -60,12 +60,12 @@
 #X obj 36 65 tgl 50 0 functVH empty Vol-Hue_function 55 7 0 10 -86853
 -1 -1 0 1;
 #X obj 39 339 hsl 100 15 0 880 0 0 f0 f0_init empty -2 -8 0 10 -260097
--1 -1 675 1;
+-1 -1 574 1;
 #X floatatom 36 360 10 0 0 0 - - -;
 #X obj 146 340 bng 15 250 50 1 reset_f0 empty reset_f0 17 7 0 10 -262144
 -1 -1;
 #X obj 40 432 hsl 101 15 0 1000 0 1 SustTime SustTime_init SustainTime
--2 -8 0 10 -261682 -1 -1 1000 1;
+-2 -8 0 10 -261682 -1 -1 800 1;
 #X floatatom 37 453 10 0 0 0 - - -;
 #X obj 153 432 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
 -1 -1 0 1;
@@ -89,7 +89,7 @@
 10 -159808 -1 -1;
 #X floatatom 36 312 10 0 0 0 - - -;
 #X obj -132 44 tgl 30 0 viewMode viewModeGUI view_mode 32 7 0 10 -232576
--1 -1 0 1;
+-1 -1 1 1;
 #X obj -133 89 tgl 30 0 mask_on mask_onGUI mask_on 32 7 0 10 -162280
 -1 -1 0 1;
 #N canvas 0 0 450 300 (subpatch) 0;
@@ -213,7 +213,7 @@
 #X connect 32 0 14 0;
 #X connect 44 0 45 0;
 #X restore 300 24 pd advanced;
-#N canvas 463 441 265 171 stuff 0;
+#N canvas 1864 685 265 171 stuff 0;
 #N canvas 32 170 938 490 mostralinha 0;
 #X obj 166 -193 gemhead;
 #X obj 161 -9 translateXYZ 0 0 1;
@@ -300,8 +300,8 @@
 #X connect 40 0 30 2;
 #X restore -442 64 pd mostralinha;
 #X obj -443 3 HSV2OSC;
-#N canvas 713 79 493 318 WINDOW 0;
-#X obj -405 78 gemwin;
+#N canvas 2042 283 493 318 WINDOW 0;
+#X obj -395 111 gemwin;
 #X msg -447 23 create \, 1;
 #X msg -323 28 destroy;
 #X obj -375 -93 r onoffgemwin;
@@ -312,6 +312,7 @@
 #X msg -384 3 \; state 1 \;;
 #X msg -319 62 dimen 1024 768 \, offset 1366 0;
 #X msg -219 -32 fps 30;
+#X msg -310 90 dimen 1280 720;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
 #X connect 3 0 4 0;
@@ -323,6 +324,7 @@
 #X connect 7 1 8 0;
 #X connect 9 0 0 0;
 #X connect 10 0 0 0;
+#X connect 11 0 0 0;
 #X restore -444 -28 pd WINDOW;
 #N canvas 403 151 450 300 EXT_CTRL 0;
 #X obj 188 145 s state;
@@ -1035,7 +1037,7 @@ is usefull to you please email mengucci@gmail.com;
 #X text 160 216 manual;
 #X text 161 226 scan;
 #X obj 65 64 vradio 15 1 0 13 scanspeed scanspeedGUI scan_time 0 -8
-0 10 -203904 -1 -1 4;
+0 10 -203904 -1 -1 10;
 #X text 85 63 fast;
 #X text 85 240 slow;
-#X text 132 -70 versione 1 novembro 2013;
+#X text 132 -70 versione 10 Março 2014;

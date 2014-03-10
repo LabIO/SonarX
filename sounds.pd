@@ -1,4 +1,4 @@
-#N canvas 371 82 1064 566 10;
+#N canvas 365 85 1064 566 10;
 #X obj 689 -3154 cnv 15 350 200 empty empty empty 20 12 0 14 -204786
 -66577 0;
 #X obj 423 -3145 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -243,7 +243,7 @@
 -1 -1;
 #X text 705 -3124 reset functionVH;
 #X obj 464 -3164 r V;
-#N canvas 132 261 805 493 sound&tables 0;
+#N canvas 130 262 805 493 sound&tables 0;
 #X obj -120 -232 table midi4th_scale;
 #X msg 163 -110 \; midi4th_scale 0 1 6 11 16 21 26 31 36 41 46 51 56
 61 66 71 76 81 86 91 96 101 106 111 116;
@@ -366,16 +366,16 @@
 #X obj 139 -2936 compressore~;
 #X obj 227 -2935 compressore~;
 #X msg 482 -2914 \; functionVH const 0;
-#X obj 15 -3391 playHSVpan 0 -45;
 #X msg 850 -3051 \; functionVH cosinesum 5 1 1 \; functionVH resize
 256;
 #X msg 475 -2972 \; functionVH cosinesum 1023 1 1 \; functionVH resize
 230;
+#X obj 266 -3388 playHSVpan 2 -32.142;
+#X obj 15 -3391 playHSVpan 0 -45;
 #X obj 837 -3350 playHSVpan 14 45;
 #X obj 534 -3386 playHSVpan 4 -19.284;
 #X obj 401 -3386 playHSVpan 3 -25.713;
 #X obj 129 -3389 playHSVpan 1 -38.571;
-#X obj 266 -3388 playHSVpan 2 -32.142;
 #X obj 669 -3383 playHSVpan 5 -12.855;
 #X obj 802 -3382 playHSVpan 6 -6.4264;
 #X obj 938 -3382 playHSVpan 7 0;
@@ -408,7 +408,7 @@
 #X connect 20 0 14 1;
 #X connect 20 0 13 1;
 #X connect 21 0 19 0;
-#X connect 22 0 39 0;
+#X connect 22 0 38 0;
 #X connect 24 0 1 0;
 #X connect 26 0 6 0;
 #X connect 28 0 22 0;
