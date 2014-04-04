@@ -1,13 +1,13 @@
-#N canvas 2116 54 603 371 10;
+#N canvas 1853 73 603 371 10;
 #X declare -lib iemnet -lib mrpeach;
 #X obj 57 -40 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
 #X obj 70 -22 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
--1 -1 1 1;
+-1 -1 0 1;
 #X obj -150 -66 cnv 15 190 360 empty empty IMAGE 70 12 0 14 -203904
 -66577 0;
 #X obj -138 -31 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
--1 -1 0 1;
+-1 -1 1 1;
 #X obj -134 211 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
 -1 -1 0;
 #X text -110 208 pc camera;
@@ -40,14 +40,14 @@
 #X floatatom 68 272 10 0 0 1 Frame_Scan_Time FrameScanTime -;
 #X obj 215 200 tgl 30 0 scango scango-set on/off_SCAN -15 40 0 10 -232576
 -1 -1 1 1;
-#N canvas 1838 474 841 522 advanced 0;
+#N canvas 1696 405 841 522 advanced 0;
 #X obj 37 145 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
 -1 -1 0;
 #X text 69 172 white_noise;
 #X text 69 198 phasor_groundtone;
 #X text 69 224 both;
 #X obj 273 -8 vradio 25 1 1 9 scale scaleGUI Escalas 0 -8 0 10 -257985
--1 -1 4;
+-1 -1 2;
 #X text 308 -7 octave digital continuous;
 #X text 308 18 octave 12 notes (chromatic);
 #X text 308 143 pentatonic M;
@@ -60,12 +60,12 @@
 #X obj 36 65 tgl 50 0 functVH empty Vol-Hue_function 55 7 0 10 -86853
 -1 -1 0 1;
 #X obj 39 339 hsl 100 15 0 880 0 0 f0 f0_init empty -2 -8 0 10 -260097
--1 -1 574 1;
+-1 -1 1389 1;
 #X floatatom 36 360 10 0 0 0 - - -;
 #X obj 146 340 bng 15 250 50 1 reset_f0 empty reset_f0 17 7 0 10 -262144
 -1 -1;
 #X obj 40 432 hsl 101 15 0 1000 0 1 SustTime SustTime_init SustainTime
--2 -8 0 10 -261682 -1 -1 800 1;
+-2 -8 0 10 -261682 -1 -1 1300 1;
 #X floatatom 37 453 10 0 0 0 - - -;
 #X obj 153 432 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
 -1 -1 0 1;
@@ -94,22 +94,22 @@
 -1 -1 0 1;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array View-H 15 float 3;
-#A 0 0.111111 0.198413 0.965812 0.0294118 0.103175 0.544304 0.611111
-0.5375 0.5 0.946667 0.00757576 0.0128205 0.0263158 0.0476191 0.32963
+#A 0 0.707207 0.739837 0.787879 0.82963 0.852201 0.873656 0.888889
+0.887255 0.891204 0.887255 0.882812 0.871345 0.843972 0.800813 0.754386
 ;
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 535 -21 graph;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array View-S 15 float 3;
-#A 0 0.040724 0.101942 0.201031 0.0994152 0.293023 0.451429 0.209302
-0.201005 0.142132 0.123762 0.103774 0.288889 0.0822511 0.092511 0.379747
+#A 0 0.480519 0.445652 0.427184 0.391304 0.40458 0.424658 0.428571
+0.427673 0.447205 0.435897 0.435374 0.422222 0.405172 0.401961 0.436782
 ;
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 533 151 graph;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array View-V 15 float 3;
-#A 0 0.866667 0.807843 0.760784 0.670588 0.843137 0.686275 0.67451
-0.780392 0.772549 0.792157 0.831373 0.705882 0.905882 0.890196 0.929412
+#A 0 0.301961 0.360784 0.403922 0.45098 0.513726 0.572549 0.603922
+0.623529 0.631373 0.611765 0.576471 0.529412 0.454902 0.4 0.341176
 ;
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 531 322 graph;
@@ -208,12 +208,17 @@
 #X obj 280 448 s scanspeed;
 #X text 277 404 set scantime;
 #X text 308 43 Indian Scale (2 octaves);
+#X obj 255 314 mtof;
+#X floatatom 256 289 5 0 0 0 - - -;
+#X msg 268 372 184.444;
 #X connect 14 0 15 0;
 #X connect 17 0 18 0;
 #X connect 32 0 14 0;
 #X connect 44 0 45 0;
+#X connect 48 0 32 0;
+#X connect 49 0 48 0;
 #X restore 300 24 pd advanced;
-#N canvas 1864 685 265 171 stuff 0;
+#N canvas 1856 801 265 171 stuff 1;
 #N canvas 32 170 938 490 mostralinha 0;
 #X obj 166 -193 gemhead;
 #X obj 161 -9 translateXYZ 0 0 1;
@@ -300,7 +305,7 @@
 #X connect 40 0 30 2;
 #X restore -442 64 pd mostralinha;
 #X obj -443 3 HSV2OSC;
-#N canvas 2042 283 493 318 WINDOW 0;
+#N canvas 2032 288 493 318 WINDOW 0;
 #X obj -395 111 gemwin;
 #X msg -447 23 create \, 1;
 #X msg -323 28 destroy;
@@ -394,7 +399,7 @@
 0;
 #X text 101 -97 start / stop;
 #X obj 125 -76 tgl 30 0 empty startstop empty 17 7 0 10 -4034 -1 -1
-1 1;
+0 1;
 #X text 253 553 sends signal of end line;
 #X obj -325 -2 pix_buffer_write frame;
 #X msg -182 -38 1;
@@ -1037,7 +1042,7 @@ is usefull to you please email mengucci@gmail.com;
 #X text 160 216 manual;
 #X text 161 226 scan;
 #X obj 65 64 vradio 15 1 0 13 scanspeed scanspeedGUI scan_time 0 -8
-0 10 -203904 -1 -1 10;
+0 10 -203904 -1 -1 7;
 #X text 85 63 fast;
 #X text 85 240 slow;
-#X text 132 -70 versione 10 Março 2014;
+#X text 132 -70 versione 4 Abril 2014;

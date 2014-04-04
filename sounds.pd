@@ -1,8 +1,8 @@
-#N canvas 365 85 1064 566 10;
+#N canvas 1628 443 1064 566 10;
 #X obj 689 -3154 cnv 15 350 200 empty empty empty 20 12 0 14 -204786
 -66577 0;
 #X obj 423 -3145 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 8539 1;
 #X obj 230 -3278 catch~ R;
 #X obj 161 -3278 catch~ L;
 #X obj 205 -3073 hip~ 5;
@@ -370,11 +370,11 @@
 256;
 #X msg 475 -2972 \; functionVH cosinesum 1023 1 1 \; functionVH resize
 230;
+#X obj 401 -3386 playHSVpan 3 -25.713;
 #X obj 266 -3388 playHSVpan 2 -32.142;
 #X obj 15 -3391 playHSVpan 0 -45;
 #X obj 837 -3350 playHSVpan 14 45;
 #X obj 534 -3386 playHSVpan 4 -19.284;
-#X obj 401 -3386 playHSVpan 3 -25.713;
 #X obj 129 -3389 playHSVpan 1 -38.571;
 #X obj 669 -3383 playHSVpan 5 -12.855;
 #X obj 802 -3382 playHSVpan 6 -6.4264;
