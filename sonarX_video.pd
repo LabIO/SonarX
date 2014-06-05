@@ -1,13 +1,13 @@
-#N canvas 1979 546 603 371 10;
+#N canvas 1977 547 603 371 10;
 #X declare -lib iemnet -lib mrpeach;
 #X obj 57 -40 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
 #X obj 70 -22 tgl 50 0 startstop empty start/stop -5 -9 0 10 -4034
--1 -1 1 1;
+-1 -1 0 1;
 #X obj -150 -66 cnv 15 190 360 empty empty IMAGE 70 12 0 14 -203904
 -66577 0;
 #X obj -138 -31 tgl 50 0 onoffgemwin empty on/off_video 60 7 0 10 -4032
--1 -1 1 1;
+-1 -1 0 1;
 #X obj -134 211 vradio 15 1 0 4 device empty device 0 -8 0 10 -262144
 -1 -1 0;
 #X text -110 208 pc camera;
@@ -15,7 +15,7 @@
 #X obj -20 56 bng 30 250 50 0 open_still_img empty load_img -7 -8 0
 10 -232576 -1 -1;
 #X obj -138 52 vradio 30 1 0 3 vidORstill vidORstill_init input 0 -10
-0 10 -4160 -1 -1 0;
+0 10 -4160 -1 -1 1;
 #X obj 293 -66 cnv 15 150 360 empty empty SOUND 70 12 0 14 -261234
 -66577 0;
 #X obj 300 -36 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
@@ -34,13 +34,13 @@
 #X text -100 93 camera;
 #X text -101 118 stored vid;
 #X obj 148 -33 tgl 30 0 conn empty on/off_OSC 32 7 0 10 -257985 -1
--1 1 1;
+-1 0 1;
 #X obj -136 168 nbx 7 15 0 999999 0 1 frames_speed empty frames_speed
 0 -8 0 10 -262144 -1 -1 17 256;
 #X floatatom 68 272 10 0 0 1 Frame_Scan_Time FrameScanTime -;
 #X obj 215 200 tgl 30 0 scango scango-set on/off_SCAN -15 40 0 10 -232576
 -1 -1 1 1;
-#N canvas 1937 180 782 519 advanced 1;
+#N canvas 1778 179 782 519 advanced 1;
 #X obj 37 137 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
 -1 -1 0;
 #X text 69 164 white_noise;
@@ -60,19 +60,19 @@
 #X obj 36 57 tgl 50 0 functVH empty Vol-Hue_function 55 7 0 10 -86853
 -1 -1 0 1;
 #X obj 39 348 hsl 100 15 0 880 0 0 f0 f0_init empty -2 -8 0 10 -260097
--1 -1 695 1;
+-1 -1 1102 1;
 #X floatatom 36 369 10 0 0 0 - - -;
 #X obj 146 349 bng 15 250 50 1 reset_f0 empty reset_f0 17 7 0 10 -262144
 -1 -1;
 #X obj 40 432 hsl 101 15 0 1000 0 1 SustTime SustTime_init SustainTime
--2 -8 0 10 -261682 -1 -1 3800 1;
+-2 -8 0 10 -261682 -1 -1 1000 1;
 #X floatatom 37 453 10 0 0 0 - - -;
 #X obj 153 432 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
 -1 -1 0 1;
 #X obj 153 452 bng 15 250 50 0 SustTimeReset empty reset 17 7 0 10
 -262144 -1 -1;
 #X obj 40 267 hsl 128 15 0 1 0 1 color_shift color_shift-r color_shift_value
--2 -8 0 10 -204800 -1 -1 300 1;
+-2 -8 0 10 -204800 -1 -1 190 1;
 #X obj -132 0 tgl 30 0 play_mov play_movGUI play_movement 32 7 0 10
 -232576 -1 -1 0 1;
 #X obj -129 213 vradio 15 1 0 2 color_space empty color_space 0 -8
@@ -88,7 +88,7 @@
 #X obj -129 162 bng 20 250 50 0 reset_scan empty reset_scan 23 7 0
 10 -159808 -1 -1;
 #X obj -132 44 tgl 30 0 viewMode viewModeGUI view_mode 32 7 0 10 -232576
--1 -1 1 1;
+-1 -1 0 1;
 #X obj -133 89 tgl 30 0 mask_on mask_onGUI mask_on 32 7 0 10 -162280
 -1 -1 0 1;
 #N canvas 0 0 450 300 (subpatch) 0;
@@ -109,7 +109,7 @@
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 502 330 graph;
 #X obj 453 439 tgl 30 0 view_tableHSV empty view_tables -32 -10 0 10
--260097 -1 -1 1 1;
+-260097 -1 -1 0 1;
 #X text 296 118 2 octaves chromatic;
 #N canvas 123 124 535 537 MouseData 0;
 #X obj 214 -1 cnv 15 100 60 empty empty empty 20 12 0 14 -24198 -66577
@@ -203,7 +203,7 @@
 #X text 254 404 set scantime;
 #X text 296 43 Indian Scale (2 octaves);
 #X obj 36 324 mtof;
-#X floatatom 36 302 5 0 0 0 - - -;
+#X floatatom 36 302 5 0 0 0 - f0-Midi-Star -;
 #X text 106 369 lowest_pitch f0 (Hz);
 #X text 73 301 lowest_pitch f0 (midi);
 #X connect 14 0 15 0;
@@ -212,7 +212,7 @@
 #X connect 46 0 14 0;
 #X connect 47 0 46 0;
 #X restore 300 24 pd advanced;
-#N canvas 2187 444 265 171 stuff 0;
+#N canvas 2185 473 265 171 stuff 1;
 #N canvas 32 170 938 490 mostralinha 0;
 #X obj 166 -193 gemhead;
 #X obj 161 -9 translateXYZ 0 0 1;
@@ -362,7 +362,7 @@
 #X connect 5 0 7 0;
 #X connect 5 0 9 0;
 #X restore -443 35 pd EXT_CTRL;
-#N canvas 669 272 331 367 INIT 0;
+#N canvas 667 273 331 367 INIT 0;
 #X obj -303 3 loadbang;
 #X obj -298 222 r reset_f0;
 #X obj -268 243 r Gmode;
@@ -371,10 +371,10 @@
 #X obj -168 227 r SustTimeReset;
 #X msg -168 254 \; SustTime_init 200 \; SustOnOff_init 0 \;;
 #X msg -298 303 60;
-#X msg -301 29 \; f0_init 60 \; SustTime_init 100 \; steps_init 480
-\; vidORstill_init 1 \; scanspeedGUI 4 \; play_mov 0 \; end_line 1
-\; img2load open ./images/nxerainbowlines2.jpg \; viewMode 0 \; color_shift-r
-0.015 \; scango-set 1 \; stateGUI 1 \;;
+#X msg -301 29 \; f0_init 60 \; f0-Midi-Star 43 \; SustTime_init 100
+\; steps_init 480 \; vidORstill_init 1 \; scanspeedGUI 4 \; play_mov
+0 \; end_line 1 \; img2load open ./images/nxerainbowlines2.jpg \; viewMode
+0 \; color_shift-r 0.015 \; scango-set 1 \; stateGUI 1 \;;
 #X connect 0 0 8 0;
 #X connect 1 0 7 0;
 #X connect 2 0 3 0;
@@ -393,7 +393,7 @@
 0;
 #X text 101 -97 start / stop;
 #X obj 125 -76 tgl 30 0 empty startstop empty 17 7 0 10 -4034 -1 -1
-1 1;
+0 1;
 #X text 253 553 sends signal of end line;
 #X obj -325 -2 pix_buffer_write frame;
 #X msg -182 -38 1;
@@ -683,7 +683,7 @@
 #X obj 300 441 tabread View-H;
 #X obj 346 277 spigot;
 #X obj 379 248 tgl 15 0 empty view_tableHSV view_tableHSV 17 7 0 10
--262144 -1 -1 1 1;
+-262144 -1 -1 0 1;
 #X obj 154 110 f;
 #X obj 44 -6 t b f b;
 #X obj 171 -66 r pix_groupN-Vert;
