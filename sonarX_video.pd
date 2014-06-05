@@ -1,4 +1,4 @@
-#N canvas 1977 547 603 371 10;
+#N canvas 1975 548 603 371 10;
 #X declare -lib iemnet -lib mrpeach;
 #X obj 57 -40 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
@@ -40,7 +40,7 @@
 #X floatatom 68 272 10 0 0 1 Frame_Scan_Time FrameScanTime -;
 #X obj 215 200 tgl 30 0 scango scango-set on/off_SCAN -15 40 0 10 -232576
 -1 -1 1 1;
-#N canvas 1778 179 782 519 advanced 1;
+#N canvas 1616 603 782 519 advanced 1;
 #X obj 37 137 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
 -1 -1 0;
 #X text 69 164 white_noise;
@@ -212,7 +212,7 @@
 #X connect 46 0 14 0;
 #X connect 47 0 46 0;
 #X restore 300 24 pd advanced;
-#N canvas 2185 473 265 171 stuff 1;
+#N canvas 2183 502 265 171 stuff 0;
 #N canvas 32 170 938 490 mostralinha 0;
 #X obj 166 -193 gemhead;
 #X obj 161 -9 translateXYZ 0 0 1;
@@ -1039,4 +1039,4 @@ is usefull to you please email mengucci@gmail.com;
 0 10 -203904 -1 -1 4;
 #X text 85 63 fast;
 #X text 85 240 slow;
-#X text 132 -70 versione 4 Abril 2014;
+#X text 132 -70 versione 5 Junho 2014;
