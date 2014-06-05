@@ -1,4 +1,4 @@
-#N canvas 586 74 603 371 10;
+#N canvas 1979 546 603 371 10;
 #X declare -lib iemnet -lib mrpeach;
 #X obj 57 -40 cnv 15 80 80 empty empty empty 20 12 0 14 -195568 -66577
 0;
@@ -15,7 +15,7 @@
 #X obj -20 56 bng 30 250 50 0 open_still_img empty load_img -7 -8 0
 10 -232576 -1 -1;
 #X obj -138 52 vradio 30 1 0 3 vidORstill vidORstill_init input 0 -10
-0 10 -4160 -1 -1 1;
+0 10 -4160 -1 -1 0;
 #X obj 293 -66 cnv 15 150 360 empty empty SOUND 70 12 0 14 -261234
 -66577 0;
 #X obj 300 -36 tgl 50 0 state stateGUI on/off_sound 60 7 0 10 -260097
@@ -40,14 +40,14 @@
 #X floatatom 68 272 10 0 0 1 Frame_Scan_Time FrameScanTime -;
 #X obj 215 200 tgl 30 0 scango scango-set on/off_SCAN -15 40 0 10 -232576
 -1 -1 1 1;
-#N canvas 301 138 782 519 advanced 1;
+#N canvas 1937 180 782 519 advanced 1;
 #X obj 37 137 vradio 25 1 0 4 Gmode GmodeGUI Gray_Mode -2 -8 0 10 -99865
 -1 -1 0;
 #X text 69 164 white_noise;
 #X text 69 190 phasor_groundtone;
 #X text 69 216 both;
 #X obj 261 -8 vradio 25 1 1 9 scale scaleGUI Escalas 0 -8 0 10 -257985
--1 -1 6;
+-1 -1 4;
 #X text 296 -7 octave digital continuous;
 #X text 296 18 octave 12 notes (chromatic);
 #X text 296 143 pentatonic M;
@@ -60,19 +60,19 @@
 #X obj 36 57 tgl 50 0 functVH empty Vol-Hue_function 55 7 0 10 -86853
 -1 -1 0 1;
 #X obj 39 348 hsl 100 15 0 880 0 0 f0 f0_init empty -2 -8 0 10 -260097
--1 -1 793 1;
+-1 -1 695 1;
 #X floatatom 36 369 10 0 0 0 - - -;
 #X obj 146 349 bng 15 250 50 1 reset_f0 empty reset_f0 17 7 0 10 -262144
 -1 -1;
 #X obj 40 432 hsl 101 15 0 1000 0 1 SustTime SustTime_init SustainTime
--2 -8 0 10 -261682 -1 -1 1000 1;
+-2 -8 0 10 -261682 -1 -1 3800 1;
 #X floatatom 37 453 10 0 0 0 - - -;
 #X obj 153 432 tgl 15 0 SustOnOff SustOnOff_init Hold 0 -10 0 10 -261682
 -1 -1 0 1;
 #X obj 153 452 bng 15 250 50 0 SustTimeReset empty reset 17 7 0 10
 -262144 -1 -1;
 #X obj 40 267 hsl 128 15 0 1 0 1 color_shift color_shift-r color_shift_value
--2 -8 0 10 -204800 -1 -1 190 1;
+-2 -8 0 10 -204800 -1 -1 300 1;
 #X obj -132 0 tgl 30 0 play_mov play_movGUI play_movement 32 7 0 10
 -232576 -1 -1 0 1;
 #X obj -129 213 vradio 15 1 0 2 color_space empty color_space 0 -8
@@ -88,31 +88,28 @@
 #X obj -129 162 bng 20 250 50 0 reset_scan empty reset_scan 23 7 0
 10 -159808 -1 -1;
 #X obj -132 44 tgl 30 0 viewMode viewModeGUI view_mode 32 7 0 10 -232576
--1 -1 0 1;
+-1 -1 1 1;
 #X obj -133 89 tgl 30 0 mask_on mask_onGUI mask_on 32 7 0 10 -162280
 -1 -1 0 1;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array View-H 15 float 3;
-#A 0 0.491228 0.527778 0.526667 0.538251 0.521605 0.572917 0.566667
-0.62963 0.613757 0.609195 0.616402 0.629252 0.625 0.583333 0.519608
+#A 0 0.333987 0.333987 0.333987 0.333987 0.333987 0.333987 0.333987
+0.333987 0.333987 0.333987 0.333987 0.333987 0.333987 0.333987 0.333987
 ;
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 506 -13 graph;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array View-S 15 float 3;
-#A 0 0.125828 0.213198 0.22831 0.256303 0.24 0.253968 0.0704225 0.642857
-0.732558 0.690476 0.75 0.742424 0.695652 0.115702 0.311927;
+#A 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 504 159 graph;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array View-V 15 float 3;
-#A 0 0.592157 0.772549 0.858824 0.933333 0.882353 0.247059 0.278431
-0.109804 0.337255 0.329412 0.329412 0.258824 0.270588 0.47451 0.854902
-;
+#A 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;
 #X coords 0 1 15 0 120 140 1 0 0;
 #X restore 502 330 graph;
 #X obj 453 439 tgl 30 0 view_tableHSV empty view_tables -32 -10 0 10
--260097 -1 -1 0 1;
+-260097 -1 -1 1 1;
 #X text 296 118 2 octaves chromatic;
 #N canvas 123 124 535 537 MouseData 0;
 #X obj 214 -1 cnv 15 100 60 empty empty empty 20 12 0 14 -24198 -66577
@@ -215,7 +212,7 @@
 #X connect 46 0 14 0;
 #X connect 47 0 46 0;
 #X restore 300 24 pd advanced;
-#N canvas 589 82 265 171 stuff 0;
+#N canvas 2187 444 265 171 stuff 0;
 #N canvas 32 170 938 490 mostralinha 0;
 #X obj 166 -193 gemhead;
 #X obj 161 -9 translateXYZ 0 0 1;
@@ -302,7 +299,7 @@
 #X connect 40 0 30 2;
 #X restore -442 64 pd mostralinha;
 #X obj -443 3 HSV2OSC;
-#N canvas 2032 288 493 318 WINDOW 0;
+#N canvas 2028 290 493 318 WINDOW 0;
 #X obj -395 111 gemwin;
 #X msg -447 23 create \, 1;
 #X msg -323 28 destroy;
@@ -385,7 +382,7 @@
 #X connect 5 0 6 0;
 #X connect 7 0 4 0;
 #X restore -443 90 pd INIT;
-#N canvas 231 79 945 665 VIDEO_MAIN 0;
+#N canvas 1774 259 945 665 VIDEO_MAIN 0;
 #X obj -270 406 pix_texture;
 #X obj 35 368 until;
 #X obj 35 392 f;
@@ -686,7 +683,7 @@
 #X obj 300 441 tabread View-H;
 #X obj 346 277 spigot;
 #X obj 379 248 tgl 15 0 empty view_tableHSV view_tableHSV 17 7 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 1 1;
 #X obj 154 110 f;
 #X obj 44 -6 t b f b;
 #X obj 171 -66 r pix_groupN-Vert;

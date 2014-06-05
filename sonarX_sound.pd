@@ -1,4 +1,4 @@
-#N canvas 65 220 1043 460 10;
+#N canvas 1487 563 1043 460 10;
 #X declare -lib mrpeach;
 #X obj 685 -373 import mrpeach;
 #X obj 467 -378 sounds;
@@ -14,7 +14,7 @@ tone;
 #X obj 3 144 unpack f f f f;
 #X obj 113 393 s scalaH;
 #X obj 110 258 vradio 15 1 0 9 empty empty empty 0 -8 0 10 -262144
--1 -1 6;
+-1 -1 7;
 #X text 131 270 octave 12 notes (cromatic);
 #X text 107 238 scale to output H values;
 #X text 128 254 octave digital continuous;
@@ -72,7 +72,7 @@ tone;
 #X obj 17 -337 cnv 15 350 150 empty empty empty 20 12 0 14 -204786
 -66577 0;
 #X obj 318 -322 vsl 20 120 0 1 0 1 V empty volume 0 -9 0 10 -262144
--1 -1 1400 1;
+-1 -1 11900 1;
 #X obj 107 -273 s functVH;
 #X obj 107 -315 tgl 30 0 empty functVH-set empty 17 7 0 10 -86853 -1
 -1 0 1;
@@ -109,22 +109,22 @@ tone;
 -66577 0;
 #X text 414 -299 level \, dB;
 #X text 653 -291 liveness \, 0-100;
-#X obj 428 -266 vsl 15 60 0 100 0 0 empty empty empty 0 -9 0 10 -4032
--1 -1 700 1;
+#X obj 428 -266 vsl 15 60 0 100 0 1 empty empty empty 0 -9 0 10 -4032
+-1 -1 5600 1;
 #X obj 428 -175 s revLev;
 #X floatatom 428 -196 0 0 100 0 - - -;
 #X obj 691 -269 vsl 15 60 0 100 0 1 empty empty empty 0 -9 0 10 -257985
--1 -1 1500 1;
+-1 -1 1200 1;
 #X floatatom 691 -201 0 0 100 0 - - -;
 #X obj 691 -178 s revLiv;
 #X obj 496 -210 mtof;
 #X floatatom 496 -188 8 0 0 0 - - -;
 #X obj 496 -281 vsl 15 60 0 186 0 1 empty empty empty 0 -9 0 10 -99865
--1 -1 800 1;
+-1 -1 2400 1;
 #X obj 496 -165 s revCrossOf;
 #X text 590 -292 dumping;
 #X obj 593 -270 vsl 15 60 0 100 0 1 empty empty empty 0 -9 0 10 -4034
--1 -1 5900 1;
+-1 -1 2400 1;
 #X floatatom 593 -200 0 0 100 0 - - -;
 #X obj 593 -178 s revDump;
 #X text 490 -305 +over freq \, Hz;
@@ -233,15 +233,15 @@ hue;
 #X obj 801 -87 ftom;
 #X floatatom 471 -48 5 0 0 0 - - -;
 #X obj 826 -283 hsl 60 10 0 1 0 1 comp-ratio empty ratio -2 -7 0 10
--101452 -262144 -355 1900 1;
+-101452 -262144 -355 4592 1;
 #X obj 826 -260 hsl 60 10 0 1 0 1 comp-attack empty attack -2 -7 0
 10 -101452 -262144 -355 500 1;
 #X obj 913 -283 hsl 60 10 0 1 0 1 comp-threshold empty threshold -2
--7 0 10 -101452 -262144 -355 4800 1;
+-7 0 10 -101452 -262144 -355 3932 1;
 #X obj 914 -259 hsl 60 10 0 1 0 1 comp-release empty release -2 -7
 0 10 -101452 -262144 -355 2697 1;
 #X obj 828 -238 hsl 60 10 0 1 0 1 comp-gain empty gain -2 -7 0 10 -101452
--262144 -355 2500 1;
+-262144 -355 2300 1;
 #X obj 806 -286 cnv 12 15 13 empty empty 0 1 6 0 12 -33289 -262144
 0;
 #X obj 806 -263 cnv 12 15 13 empty empty 2 1 6 0 12 -33289 -262144
@@ -287,8 +287,8 @@ hue;
 #X text 206 -235 Reset fVH;
 #X obj 201 -271 s VoiceType;
 #X obj 201 -313 hradio 30 1 0 3 empty empty empty 0 -8 0 10 -86853
--262144 -1 2;
-#X text 848 -379 versione 4 Abril 2014;
+-262144 -1 0;
+#X text 848 -379 versione 3 Junho 2014;
 #X connect 7 0 6 0;
 #X connect 8 0 9 0;
 #X connect 15 0 17 0;
