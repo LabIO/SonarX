@@ -15,12 +15,14 @@ The software GUI is in developement. It will be optimized to a setup which can a
 
 Video Options
 - image input
+- 
 - scan speed
 - 
 
 Sound Options
 - scale
 - f0 ground tone for the musical scale
+
 - sustain
 - 
 
